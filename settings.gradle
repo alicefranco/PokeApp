@@ -1,3 +1,5 @@
 rootProject.name='PokeApp'
 include ':app'
 include ':feature-poke-list'
+include ':shared-domain'
+include ':shared-network'

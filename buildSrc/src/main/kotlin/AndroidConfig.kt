@@ -29,6 +29,8 @@ object PluginIds {
     const val KOTLIN_ANDROID = "kotlin-android"
     const val KOTLIN_ANDROID_EXTENSIONS = "kotlin-android-extensions"
     const val ANDROID_LIBRARY = "com.android.library"
+    const val KOTLIN_LIBRARY = "kotlin"
+    const val JAVA_LIBRARY = "java-library"
     const val KTLINT_ANDROID = "org.jlleitschuh.gradle.ktlint"
 }
 

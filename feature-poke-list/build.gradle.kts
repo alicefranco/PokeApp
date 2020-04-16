@@ -5,6 +5,12 @@ plugins {
     id(PluginIds.KTLINT_ANDROID)
 }
 
+repositories {
+    mavenCentral()
+    maven(url = "https://jitpack.io")
+}
+
+
 android {
     compileSdkVersion(AppConfig.COMPILE_SDK_VERSION)
     buildToolsVersion(AppConfig.BUILD_TOOLS_VERSION)
