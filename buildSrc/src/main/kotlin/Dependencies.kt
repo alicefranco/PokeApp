@@ -6,7 +6,8 @@ object Dependencies {
     const val CORE_KTX = "androidx.core:core-ktx:${Versions.CORE_KTX}"
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT_LAYOUT}"
 
-    const val JUNIT = "junit:junit:${Versions.JUNIT}"
+    //const val JUNIT = "junit:junit:${Versions.JUNIT}"
+    const val JUNIT = "androidx.test.ext:junit:${Versions.JUNIT}"
     const val TEST_RUNNER = "androidx.test:runner:${Versions.TEST_RUNNER}"
     const val ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO}"
 
