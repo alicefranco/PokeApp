@@ -10,7 +10,6 @@ repositories {
     maven(url = "https://jitpack.io")
 }
 
-
 android {
     compileSdkVersion(AppConfig.COMPILE_SDK_VERSION)
     buildToolsVersion(AppConfig.BUILD_TOOLS_VERSION)
@@ -52,12 +51,15 @@ android {
         }
     }
 
-    kotlinOptions{
+    kotlinOptions {
         jvmTarget = AppConfig.JVM_TARGET
     }
 }
 
 dependencies {
+    implementation(project(ProjectModules.Shared.DOMAIN))
+    implementation(project(ProjectModules.Shared.NETWORK))
+
     implementation(Dependencies.KOTLIN_STD_LIB)
     implementation(Dependencies.APP_COMPAT)
     implementation(Dependencies.CORE_KTX)

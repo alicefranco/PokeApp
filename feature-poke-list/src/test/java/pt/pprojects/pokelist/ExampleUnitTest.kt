@@ -1,4 +1,4 @@
-package com.example.feature_poke_list
+package pt.pprojects.pokelist
 
 import org.junit.Test
 

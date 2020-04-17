@@ -59,6 +59,10 @@ android {
 }
 
 dependencies {
+    implementation(project(ProjectModules.Feature.POKELIST))
+    implementation(project(ProjectModules.Shared.DOMAIN))
+    implementation(project(ProjectModules.Shared.NETWORK))
+
     implementation(Dependencies.KOTLIN_STD_LIB)
     implementation(Dependencies.APP_COMPAT)
     implementation(Dependencies.CORE_KTX)
