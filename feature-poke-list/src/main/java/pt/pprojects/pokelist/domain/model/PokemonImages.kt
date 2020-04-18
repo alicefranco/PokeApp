@@ -12,4 +12,4 @@ data class PokemonImages(
     private val backShiny: String,
     private val frontFemaleShiny: String,
     private val backFemaleShiny: String
-): ModelInterface
+) : ModelInterface

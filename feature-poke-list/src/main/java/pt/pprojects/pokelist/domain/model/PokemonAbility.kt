@@ -6,4 +6,4 @@ data class PokemonAbility(
     private val abiltiyId: Int,
     private val abilityName: String,
     private val isHidden: Boolean
-): ModelInterface
+) : ModelInterface

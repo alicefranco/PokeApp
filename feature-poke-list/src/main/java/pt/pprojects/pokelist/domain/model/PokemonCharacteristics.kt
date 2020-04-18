@@ -11,4 +11,4 @@ data class PokemonCharacteristics(
     private val weight: Int,
     private val abilities: List<PokemonAbility>,
     private val moves: List<PokemonMove>
-): ModelInterface
+) : ModelInterface
