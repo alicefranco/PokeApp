@@ -1,5 +1,5 @@
 package pt.pprojects.domain
 
-interface UseCaseInterface<out Type, in Params> {
-    fun execute(params: Params?): Type
+interface UseCaseInterface<Type, Params> {
+    fun execute(refresh: Boolean, params: Params): Type
 }

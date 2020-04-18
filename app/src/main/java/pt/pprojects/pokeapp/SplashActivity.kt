@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import pt.pprojects.pokelist.PokeListActivity
+import pt.pprojects.pokelist.presentation.pokelist.PokeListActivity
 
 class SplashActivity : AppCompatActivity() {
 

@@ -1,7 +1,8 @@
-package pt.pprojects.pokelist
+package pt.pprojects.pokelist.presentation.pokelist
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import pt.pprojects.pokelist.R
 
 class PokeListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

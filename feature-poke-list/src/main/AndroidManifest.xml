@@ -2,7 +2,7 @@
     package="pt.pprojects.pokelist">
 
     <application>
-        <activity android:name=".PokeListActivity"
+        <activity android:name=".presentation.pokelist.PokeListActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
