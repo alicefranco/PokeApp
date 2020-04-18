@@ -10,5 +10,5 @@ repositories {
 }
 
 dependencies {
-    implementation(Dependencies.KOTLIN_STD_LIB)
+    implementation(Libraries.KOTLIN_STD_LIB)
 }

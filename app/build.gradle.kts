@@ -63,11 +63,11 @@ dependencies {
     implementation(project(ProjectModules.Shared.DOMAIN))
     implementation(project(ProjectModules.Shared.NETWORK))
 
-    implementation(Dependencies.KOTLIN_STD_LIB)
-    implementation(Dependencies.APP_COMPAT)
-    implementation(Dependencies.CORE_KTX)
-    implementation(Dependencies.CONSTRAINT_LAYOUT)
-    testImplementation(Dependencies.JUNIT)
-    androidTestImplementation(Dependencies.TEST_RUNNER)
-    androidTestImplementation(Dependencies.ESPRESSO)
+    implementation(Libraries.KOTLIN_STD_LIB)
+    implementation(Libraries.APP_COMPAT)
+    implementation(Libraries.CORE_KTX)
+    implementation(Libraries.CONSTRAINT_LAYOUT)
+    testImplementation(Libraries.JUNIT)
+    androidTestImplementation(Libraries.TEST_RUNNER)
+    androidTestImplementation(Libraries.ESPRESSO)
 }
