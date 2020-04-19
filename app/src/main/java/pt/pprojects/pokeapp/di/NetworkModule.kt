@@ -13,7 +13,6 @@ import pt.pprojects.network.manager.NetworkManager
 import pt.pprojects.network.manager.NetworkManagerInterface
 import pt.pprojects.pokeapp.BuildConfig
 import pt.pprojects.pokeapp.network.ConnectionCheck
-import java.util.logging.Logger
 
 private const val NETWORKING_ERROR_MAPPER = "NETWORKING_ERROR_MAPPER"
 private const val HTTP_LOGGING_INTERCEPTOR = "HTTP_LOGGING_INTERCEPTOR"

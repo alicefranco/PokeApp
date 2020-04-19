@@ -70,6 +70,12 @@ dependencies {
 
     implementation(Libraries.KOIN_ANDROID)
 
+    implementation(Libraries.RX_JAVA)
+
+    implementation(Libraries.RETROFIT)
+    implementation(Libraries.OKHTTP)
+    implementation(Libraries.OKHTTP_LOGGER)
+
     testImplementation(Libraries.JUNIT)
     androidTestImplementation(Libraries.TEST_RUNNER)
     androidTestImplementation(Libraries.ESPRESSO)
