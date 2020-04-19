@@ -67,6 +67,9 @@ dependencies {
     implementation(Libraries.APP_COMPAT)
     implementation(Libraries.CORE_KTX)
     implementation(Libraries.CONSTRAINT_LAYOUT)
+
+    implementation(Libraries.KOIN_ANDROID)
+
     testImplementation(Libraries.JUNIT)
     androidTestImplementation(Libraries.TEST_RUNNER)
     androidTestImplementation(Libraries.ESPRESSO)

@@ -1,5 +1,5 @@
 package pt.pprojects.network
 
-interface ConnectionCheck {
+interface ConnectionCheckInterface {
     fun hasInternetConnection(): Boolean
 }

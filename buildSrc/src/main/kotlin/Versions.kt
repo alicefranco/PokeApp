@@ -25,7 +25,9 @@ object Versions {
     //0.5.0
     const val RETROFIT_KOTLIN_SERIALIZATION_CONVERTER = "0.4.0"
 
+    //DEPENDENCY INJECTION
+    //2.1.15
+    const val KOIN = "2.0.1"
 
-
-
+    //Comments on top of specific versions are version updates available, to be updated later
 }

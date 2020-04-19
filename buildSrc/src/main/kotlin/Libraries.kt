@@ -21,6 +21,10 @@ object Libraries {
     const val RETROFIT_RX_JAVA_ADAPTER = "com.squareup.retrofit2:adapter-rxjava2:${Versions.RETROFIT_RX_JAVA_ADAPTER}"
     const val RETROFIT_KOTLIN_SERIALIZATION_CONVERTER = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Versions.RETROFIT_KOTLIN_SERIALIZATION_CONVERTER}"
 
-
+    //DEPENDENCY INJECTION
+    const val KOIN_CORE = "org.koin:koin-core:${Versions.KOIN}"
+    const val KOIN_ANDROID = "org.koin:koin-android:${Versions.KOIN}"
+    const val KOIN_SCOPE = "org.koin:koin-androidx-scope:${Versions.KOIN}"
+    const val KOIN_VIEWMODEL = "org.koin:koin-androidx-viewmodel:${Versions.KOIN}"
 
 }

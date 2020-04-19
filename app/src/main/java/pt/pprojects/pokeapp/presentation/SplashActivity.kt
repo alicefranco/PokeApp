@@ -1,4 +1,4 @@
-package pt.pprojects.pokeapp
+package pt.pprojects.pokeapp.presentation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +14,9 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
             startActivity(Intent(this, PokeListActivity::class.java))
             finish()
-        }, DELAY_SIMULATION)
+        },
+            DELAY_SIMULATION
+        )
     }
 
     private companion object {

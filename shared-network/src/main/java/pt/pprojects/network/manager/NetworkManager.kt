@@ -3,11 +3,11 @@ package pt.pprojects.network.manager
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.functions.Function
-import pt.pprojects.network.ConnectionCheck
+import pt.pprojects.network.ConnectionCheckInterface
 import pt.pprojects.network.error.NetworkingError
 
 class NetworkManager(
-    private val connectionCheck: ConnectionCheck,
+    private val connectionCheck: ConnectionCheckInterface,
     private val networkingErrorMapper: Function<Throwable, NetworkingError>
 ) : NetworkManagerInterface {
 
