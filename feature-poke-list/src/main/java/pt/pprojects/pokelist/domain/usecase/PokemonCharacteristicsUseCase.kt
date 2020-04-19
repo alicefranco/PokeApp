@@ -2,7 +2,6 @@ package pt.pprojects.pokelist.domain.usecase
 
 import io.reactivex.Single
 import pt.pprojects.domain.UseCaseInterface
-import pt.pprojects.pokelist.domain.model.Pokemon
 import pt.pprojects.pokelist.domain.model.PokemonCharacteristics
 import pt.pprojects.pokelist.domain.repository.PokemonRepositoryInterface
 

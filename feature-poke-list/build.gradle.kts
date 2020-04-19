@@ -64,7 +64,13 @@ dependencies {
     implementation(Libraries.KOTLIN_STD_LIB)
     implementation(Libraries.APP_COMPAT)
     implementation(Libraries.CORE_KTX)
+
     implementation(Libraries.CONSTRAINT_LAYOUT)
+    implementation(Libraries.RECYCLER_VIEW)
+    implementation(Libraries.MATERIAL_DESIGN)
+
+    implementation(Libraries.LIVEDATA)
+    implementation(Libraries.VIEWMODEL)
 
     implementation(Libraries.RX_JAVA)
     implementation(Libraries.KOTLIN_SERIALIZATION)

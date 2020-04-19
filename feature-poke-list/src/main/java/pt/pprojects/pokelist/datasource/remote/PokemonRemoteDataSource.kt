@@ -1,7 +1,7 @@
 package pt.pprojects.pokelist.datasource.remote
 
 import io.reactivex.Single
-import pt.pprojects.network.manager.NetworkManager
+import pt.pprojects.network.manager.NetworkManagerInterface
 import pt.pprojects.pokelist.data.datasource.PokemonRemoteDataSourceInterface
 import pt.pprojects.pokelist.datasource.remote.mapper.PokemonRemoteDomainMapper
 import pt.pprojects.pokelist.datasource.remote.service.PokemonService
@@ -9,7 +9,7 @@ import pt.pprojects.pokelist.domain.model.Pokemon
 import pt.pprojects.pokelist.domain.model.PokemonCharacteristics
 
 class PokemonRemoteDataSource(
-    private val networkManager: NetworkManager,
+    private val networkManager: NetworkManagerInterface,
     private val pokemonService: PokemonService,
     private val pokemonMapper: PokemonRemoteDomainMapper
 ) : PokemonRemoteDataSourceInterface {
