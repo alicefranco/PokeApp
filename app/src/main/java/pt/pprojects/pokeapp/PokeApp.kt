@@ -4,6 +4,7 @@ import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import pt.pprojects.pokeapp.di.networkModule
+import pt.pprojects.pokelist.datasource.di.pokeListModule
 
 class PokeApp : Application() {
     override fun onCreate() {
@@ -17,7 +18,8 @@ class PokeApp : Application() {
             androidContext(this@PokeApp)
             modules(
                 listOf(
-                    networkModule
+                    networkModule,
+                    pokeListModule
                 )
             )
         }
