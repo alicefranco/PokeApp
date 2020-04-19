@@ -10,6 +10,7 @@ buildscript {
         classpath(PluginDependencies.GRADLE)
         classpath(PluginDependencies.KOTLIN)
         classpath(PluginDependencies.KTLINT)
+        classpath(PluginDependencies.KOTLIN_SERIALIZATION)
     }
 }
 

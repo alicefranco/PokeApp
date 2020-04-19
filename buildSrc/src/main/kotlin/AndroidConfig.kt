@@ -32,11 +32,13 @@ object PluginIds {
     const val KOTLIN_LIBRARY = "kotlin"
     const val JAVA_LIBRARY = "java-library"
     const val KTLINT_ANDROID = "org.jlleitschuh.gradle.ktlint"
+    const val KOTLIN_SERIALIZATION = "kotlinx-serialization"
 }
 
 object PluginDependencies {
     const val GRADLE = "com.android.tools.build:gradle:${AndroidVersions.ANDROID_GRADLE}"
     const val KOTLIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${AndroidVersions.KOTLIN}"
     const val KTLINT = "org.jlleitschuh.gradle:ktlint-gradle:${AndroidVersions.KTLINT}"
+    const val KOTLIN_SERIALIZATION = "org.jetbrains.kotlin:kotlin-serialization:${AndroidVersions.KOTLIN}"
 }
 

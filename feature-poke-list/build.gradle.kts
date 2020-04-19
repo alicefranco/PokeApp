@@ -3,6 +3,7 @@ plugins {
     id(PluginIds.KOTLIN_ANDROID)
     id(PluginIds.KOTLIN_ANDROID_EXTENSIONS)
     id(PluginIds.KTLINT_ANDROID)
+    id(PluginIds.KOTLIN_SERIALIZATION)
 }
 
 repositories {
@@ -64,6 +65,15 @@ dependencies {
     implementation(Libraries.APP_COMPAT)
     implementation(Libraries.CORE_KTX)
     implementation(Libraries.CONSTRAINT_LAYOUT)
+
+    implementation(Libraries.RX_JAVA)
+    implementation(Libraries.KOTLIN_SERIALIZATION)
+    implementation(Libraries.RETROFIT)
+
+    implementation(Libraries.KOIN_CORE)
+    implementation(Libraries.KOIN_SCOPE)
+    implementation(Libraries.KOIN_VIEWMODEL)
+
     testImplementation(Libraries.JUNIT)
     androidTestImplementation(Libraries.TEST_RUNNER)
     androidTestImplementation(Libraries.ESPRESSO)

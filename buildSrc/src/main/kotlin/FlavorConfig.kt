@@ -7,8 +7,8 @@ object FlavorConfig {
     }
 
     object Endpoint {
-        const val DEVELOPMENT = "\"https://pokeapi.co/\""
-        const val PRODUCTION = "\"https://pokeapi.co/\""
+        const val DEVELOPMENT = "\"https://pokeapi.co/api/v2/\""
+        const val PRODUCTION = "\"https://pokeapi.co/api/v2/\""
     }
 
     object Flavor {
