@@ -27,7 +27,7 @@ class PokeListActivity : AppCompatActivity() {
             handleResult(it)
         })
 
-        pokeListViewModel.getPokemons(offset = 0)
+        getPokemons(0)
     }
 
     private fun setupRecycler() {
@@ -40,13 +40,20 @@ class PokeListActivity : AppCompatActivity() {
     private fun handleResult(result: Result<List<PokemonItem>>) {
         when (result) {
             is Result.Success -> {
+                pb_list_loading.gone()
+                rv_pokemons.visible()
                 pokemonsAdapter.addPokemons(result.data)
                 pokemonsAdapter.notifyDataSetChanged()
             }
-            is Result.Loading -> {}
+            is Result.Loading -> {
+            }
             is Result.Error -> {
                 Log.d("ERROR", result.cause.message ?: "")
             }
         }
+    }
+
+    private fun getPokemons(offset: Int) {
+        pokeListViewModel.getPokemons(offset = offset)
     }
 }

@@ -1,8 +1,8 @@
 package pt.pprojects.pokelist.presentation.mapper
 
-import kotlinx.android.synthetic.main.activity_pokelist.view.*
 import pt.pprojects.pokelist.R
 import pt.pprojects.pokelist.domain.model.Pokemon
+import pt.pprojects.pokelist.presentation.model.ListItem
 import pt.pprojects.pokelist.presentation.model.PokemonItem
 
 class PokemonDomainPresentationMapper {
@@ -12,6 +12,7 @@ class PokemonDomainPresentationMapper {
     ): List<PokemonItem> {
         return pokemons.map {
             PokemonItem(
+                itemType = ListItem.LIST_ITEM,
                 number = it.pokemonId.toString(),
                 name = it.pokemonName,
                 cardColor = getCardColorByGeneration(it.pokemonId),
