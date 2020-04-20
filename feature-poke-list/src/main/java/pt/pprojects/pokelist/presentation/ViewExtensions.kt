@@ -1,4 +1,4 @@
-package pt.pprojects.pokelist.presentation.pokelist
+package pt.pprojects.pokelist.presentation
 
 import android.view.View
 

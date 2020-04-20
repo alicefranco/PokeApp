@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_load_more.view.*
 import kotlinx.android.synthetic.main.item_pokemon.view.*
@@ -20,11 +21,17 @@ class PokemonsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var listItems: List<ListItem> = listOf()
     private val loadingItem = ListItem(ListItem.LOADING_ITEM)
 
+    private var pokemonItemClick: (pokemonId: Int) -> Unit = {}
+
     fun addPokemons(pokemonItems: List<PokemonItem>) {
         val items: ArrayList<ListItem> = ArrayList(pokemonItems)
 
         // items.add(loadingItem)
         listItems = items
+    }
+
+    fun addPokemonItemClick(itemClick: (pokemonId: Int) -> Unit) {
+        pokemonItemClick = itemClick
     }
 
     override fun getItemCount(): Int {
@@ -61,7 +68,7 @@ class PokemonsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 (holder as ViewHolderLoadMoreItem).bind()
             }
             POKEMON_ITEM_VIEW -> {
-                (holder as ViewHolderPokemonItem).bind(listItems[position] as PokemonItem)
+                (holder as ViewHolderPokemonItem).bind(listItems[position] as PokemonItem, pokemonItemClick)
             }
         }
     }
@@ -69,10 +76,12 @@ class PokemonsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     class ViewHolderPokemonItem(item: View) : RecyclerView.ViewHolder(item) {
         private val pokemonIdTextView: TextView = item.tv_pokemon_number
         private val pokemonNameTextView: TextView = item.tv_pokemon_name
+        private val pokemonLayout: ConstraintLayout = item.layout_item_pokemon
 
-        fun bind(pokemon: PokemonItem) {
+        fun bind(pokemon: PokemonItem, itemClick: (pokemonId: Int) -> Unit) {
             pokemonIdTextView.text = pokemon.number
             pokemonNameTextView.text = pokemon.name
+            pokemonLayout.setOnClickListener { itemClick(pokemon.number.toInt()) }
         }
     }
 

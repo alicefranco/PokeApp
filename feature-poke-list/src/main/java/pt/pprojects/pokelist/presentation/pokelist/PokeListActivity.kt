@@ -1,5 +1,6 @@
 package pt.pprojects.pokelist.presentation.pokelist
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +10,10 @@ import kotlinx.android.synthetic.main.activity_pokelist.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pt.pprojects.domain.Result
 import pt.pprojects.pokelist.R
+import pt.pprojects.pokelist.presentation.gone
 import pt.pprojects.pokelist.presentation.model.PokemonItem
+import pt.pprojects.pokelist.presentation.pokemondetails.PokemonDetailsActivity
+import pt.pprojects.pokelist.presentation.visible
 
 class PokeListActivity : AppCompatActivity() {
 
@@ -32,6 +36,7 @@ class PokeListActivity : AppCompatActivity() {
 
     private fun setupRecycler() {
         pokemonsAdapter = PokemonsAdapter()
+        pokemonsAdapter.addPokemonItemClick(pokemonItemClick)
 
         rv_pokemons.layoutManager = layoutManager
         rv_pokemons.adapter = pokemonsAdapter
@@ -55,5 +60,19 @@ class PokeListActivity : AppCompatActivity() {
 
     private fun getPokemons(offset: Int) {
         pokeListViewModel.getPokemons(offset = offset)
+    }
+
+    private val pokemonItemClick: (pokemonId: Int) -> Unit = { pokemonId ->
+        openPokemonDetailsScreen(pokemonId)
+    }
+
+    private fun openPokemonDetailsScreen(pokemonId: Int) {
+        val intent = Intent(this, PokemonDetailsActivity::class.java)
+        intent.putExtra(POKEMON_ID, pokemonId)
+        startActivity(intent)
+    }
+
+    companion object {
+        const val POKEMON_ID = "POKEMON_ID"
     }
 }

@@ -1,8 +1,24 @@
 <resources>
     <string name="app_name">PokeApp</string>
 
-    <string name="pokemon_number_placeholder">Number</string>
-    <string name="pokemon_name_placeholder">Pokemon Name</string>
+    <string name="pokemon_number_placeholder">NUMBER</string>
+    <string name="pokemon_name_placeholder">POKEMON NAME</string>
 
     <string name="content_description_header_logo">Header logo</string>
+    <string name="content_description_close_button">Screen close button</string>
+    <string name="content_description_pokemon_image">Pokemon image</string>
+
+    <string name="label_info">Info:</string>
+    <string name="label_weight">Weight:</string>
+    <string name="label_height">Height:</string>
+    <string name="label_types">Types:</string>
+    <string name="label_moves">Moves:</string>
+    <string name="label_abilities">Abilities:</string>
+
+
+    <string name="pokemon_height_placeholder">HEIGHT</string>
+    <string name="pokemon_weight_placeholder">WEIGHT</string>
+    <string name="pokemon_type_placeholder">TYPE</string>
+    <string name="pokemon_ability_placeholder">ABILITY</string>
+    <string name="pokemon_move_placeholder">MOVE</string>
 </resources>
