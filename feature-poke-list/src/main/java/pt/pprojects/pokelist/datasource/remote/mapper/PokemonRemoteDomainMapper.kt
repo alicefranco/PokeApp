@@ -1,6 +1,6 @@
 package pt.pprojects.pokelist.datasource.remote.mapper
 
-import pt.pprojects.pokelist.datasource.model.*
+import pt.pprojects.pokelist.datasource.remote.model.*
 import pt.pprojects.pokelist.domain.model.*
 import pt.pprojects.pokelist.domain.model.PokemonAbility
 import pt.pprojects.pokelist.domain.model.PokemonMove

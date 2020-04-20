@@ -5,28 +5,30 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
-import pt.pprojects.pokelist.domain.model.Pokemon
 import pt.pprojects.pokelist.domain.usecase.PokemonsUseCase
 import pt.pprojects.domain.Result
+import pt.pprojects.pokelist.presentation.mapper.PokemonDomainPresentationMapper
+import pt.pprojects.pokelist.presentation.model.PokemonItem
 
 class PokeListViewModel(
     private val scheduler: Scheduler,
-    private val pokemonsUseCase: PokemonsUseCase
+    private val pokemonsUseCase: PokemonsUseCase,
+    private val pokemonMapper: PokemonDomainPresentationMapper
 ) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
     private val mutablePokemons =
-        MutableLiveData<Result<List<Pokemon>>>()
-    val pokemons: LiveData<Result<List<Pokemon>>>
+        MutableLiveData<Result<List<PokemonItem>>>()
+    val pokemons: LiveData<Result<List<PokemonItem>>>
         get() = mutablePokemons
 
     fun getPokemons(refresh: Boolean = false, offset: Int) {
         val disposable = pokemonsUseCase.execute(refresh, offset)
             .subscribeOn(scheduler)
             .doOnSubscribe { mutablePokemons.postValue(Result.Loading) }
-            .map<Result<List<Pokemon>>> { pokemons ->
+            .map<Result<List<PokemonItem>>> { pokemons ->
                 Result.Success(
-                    pokemons
+                    pokemonMapper.mapPokemonsToPresentation(pokemons)
                 )
             }
             .onErrorReturn { err -> Result.Error(err) }

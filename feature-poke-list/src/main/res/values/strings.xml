@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PokeApp</string>
+
+    <string name="pokemon_number_placeholder">Number</string>
+    <string name="pokemon_name_placeholder">Pokemon Name</string>
+
+    <string name="content_description_header_logo">Header logo</string>
 </resources>

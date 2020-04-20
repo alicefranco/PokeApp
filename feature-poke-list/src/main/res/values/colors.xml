@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF0000</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGeneration1">#00BCD4</color>
+    <color name="colorGeneration2">#FFFFFF</color>
+    <color name="colorGeneration3">#FFFFFF</color>
+    <color name="colorGeneration4">#FFFFFF</color>
+    <color name="colorGeneration5">#FFFFFF</color>
+    <color name="colorGeneration6">#FFFFFF</color>
+    <color name="colorGeneration7">#FFFFFF</color>
+    <color name="colorGeneration8">#FFFFFF</color>
+    <color name="colorGeneration9">#FFFFFF</color>
+</resources>

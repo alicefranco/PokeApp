@@ -3,8 +3,8 @@ package pt.pprojects.pokelist.datasource.remote.service
 import retrofit2.http.GET
 import retrofit2.http.Query
 import io.reactivex.Single
-import pt.pprojects.pokelist.datasource.model.PokemonCharacteristicsResponse
-import pt.pprojects.pokelist.datasource.model.PokemonResponse
+import pt.pprojects.pokelist.datasource.remote.model.PokemonCharacteristicsResponse
+import pt.pprojects.pokelist.datasource.remote.model.PokemonListResponse
 import retrofit2.http.Path
 
 interface PokemonService {
@@ -12,7 +12,7 @@ interface PokemonService {
     fun getPokemons(
         @Query("offset") offset: Int,
         @Query("limit") limit: Int
-    ): Single<List<PokemonResponse>>
+    ): Single<PokemonListResponse>
 
     @GET("pokemon/{pokemonId}")
     fun getPokemonCharacteristics(

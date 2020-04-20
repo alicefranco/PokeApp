@@ -18,7 +18,7 @@ class PokemonRemoteDataSource(
             pokemonService
                 .getPokemons(offset, limit)
                 .map {
-                    pokemonMapper.mapPokemonsToDomain(it)
+                    pokemonMapper.mapPokemonsToDomain(it.pokemons)
                 }
         )
     }
