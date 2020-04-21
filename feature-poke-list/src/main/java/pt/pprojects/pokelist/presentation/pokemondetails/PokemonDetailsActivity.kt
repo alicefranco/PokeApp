@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -54,9 +55,9 @@ class PokemonDetailsActivity : AppCompatActivity() {
     private fun setPokemonDetails(details: PokemonDetails) {
         setImageWithGlide(iv_pokemon, details.images.frontDefault)
 
-        setOptionalImage(iv_female, details.images.frontFemale)
-        setOptionalImage(iv_shiny, details.images.frontShiny)
-        setOptionalImage(iv_female_shiny, details.images.frontFemaleShiny)
+        setOptionalImage(iv_female, cl_female, details.images.frontFemale)
+        setOptionalImage(iv_shiny, cl_male_shiny, details.images.frontShiny)
+        setOptionalImage(iv_female_shiny, cl_female_shiny, details.images.frontFemaleShiny)
 
         tv_pokemon_name.text = details.pokemonName
         tv_weight_value.text = details.weight
@@ -70,12 +71,12 @@ class PokemonDetailsActivity : AppCompatActivity() {
         layout_pokemon_details.visible()
     }
 
-    fun setOptionalImage(imageView: ImageView, resource: String?) {
+    fun setOptionalImage(imageView: ImageView, imageContainer: ConstraintLayout, resource: String?) {
         resource?.let {
             if (resource.isNotEmpty()) {
                 setImageWithGlide(imageView, it)
                 cl_others.visible()
-                imageView.visible()
+                imageContainer.visible()
             }
         }
     }

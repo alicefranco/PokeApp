@@ -76,32 +76,100 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
 
-                    <ImageView
-                        android:id="@+id/iv_female"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:contentDescription="@string/content_description_image_female"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
                         android:visibility="gone"
-                        app:srcCompat="@drawable/ic_1"
-                        tools:visibility="visible" />
+                        tools:visibility="visible">
 
-                    <ImageView
-                        android:id="@+id/iv_shiny"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:contentDescription="@string/content_description_image_shiny"
-                        android:visibility="gone"
-                        app:srcCompat="@drawable/ic_1"
-                        tools:visibility="visible" />
+                        <ImageView
+                            android:id="@+id/iv_female"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:contentDescription="@string/content_description_image_female"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_1" />
 
-                    <ImageView
-                        android:id="@+id/iv_female_shiny"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:contentDescription="@string/content_description_image_female_shiny"
+                        <ImageView
+                            android:id="@+id/iv_gender_female"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_weight="1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/iv_female"
+                            app:srcCompat="@drawable/ic_gender_female" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_male_shiny"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
                         android:visibility="gone"
-                        app:srcCompat="@drawable/ic_1"
-                        tools:visibility="visible" />
+                        tools:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/iv_shiny"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:contentDescription="@string/content_description_image_shiny"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_1" />
+
+                        <ImageView
+                            android:id="@+id/iv_gender_male_shiny"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:srcCompat="@drawable/ic_gender_male_shiny" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_female_shiny"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/iv_female_shiny"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:contentDescription="@string/content_description_image_female_shiny"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_1" />
+
+                        <ImageView
+                            android:id="@+id/iv_gender_female_shiny"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:srcCompat="@drawable/ic_gender_female_shiny" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -128,6 +196,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_1" />
+
+            <ImageView
+                android:id="@+id/iv_gender_male"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_pokemon"
+                app:layout_constraintEnd_toEndOf="@+id/iv_pokemon"
+                app:srcCompat="@drawable/ic_gender_male" />
 
             <TextView
                 android:id="@+id/tv_pokemon_name"
