@@ -2,9 +2,11 @@ package pt.pprojects.pokelist.presentation.pokemondetails
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_pokemon_details.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pt.pprojects.domain.Result
@@ -50,7 +52,12 @@ class PokemonDetailsActivity : AppCompatActivity() {
     }
 
     private fun setPokemonDetails(details: PokemonDetails) {
-        // iv_pokemon.setImageResource(details.images.frontDefault) //glide
+        setImageWithGlide(iv_pokemon, details.images.frontDefault)
+
+        setOptionalImage(iv_female, details.images.frontFemale)
+        setOptionalImage(iv_shiny, details.images.frontShiny)
+        setOptionalImage(iv_female_shiny, details.images.frontFemaleShiny)
+
         tv_pokemon_name.text = details.pokemonName
         tv_weight_value.text = details.weight
         tv_height_value.text = details.height
@@ -61,6 +68,16 @@ class PokemonDetailsActivity : AppCompatActivity() {
 
         pb_pokemon_details.gone()
         layout_pokemon_details.visible()
+    }
+
+    fun setOptionalImage(imageView: ImageView, resource: String?) {
+        resource?.let {
+            if (resource.isNotEmpty()) {
+                setImageWithGlide(imageView, it)
+                cl_others.visible()
+                imageView.visible()
+            }
+        }
     }
 
     private fun setTypes(types: List<TypeItem>) {
@@ -100,6 +117,10 @@ class PokemonDetailsActivity : AppCompatActivity() {
 
         rv_abilities.layoutManager = abilitiesLayoutManager
         rv_abilities.adapter = abilitiesAdapter
+    }
+
+    private fun setImageWithGlide(imageView: ImageView, resource: String) {
+        Glide.with(this).load(resource).into(imageView)
     }
 
     private fun closePokemonDetailsScreen() {

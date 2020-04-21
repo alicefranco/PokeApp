@@ -33,6 +33,7 @@ object PluginIds {
     const val JAVA_LIBRARY = "java-library"
     const val KTLINT_ANDROID = "org.jlleitschuh.gradle.ktlint"
     const val KOTLIN_SERIALIZATION = "kotlinx-serialization"
+    const val KAPT = "kotlin-kapt"
 }
 
 object PluginDependencies {

@@ -13,6 +13,7 @@ object Versions {
     const val CONSTRAINT_LAYOUT = "1.1.3"
     const val RECYCLER_VIEW = "1.0.0"
     const val MATERIAL_DESIGN = "1.0.0"
+    const val GLIDE = "4.11.0"
 
     //NETWORK
     const val KOTLIN_SERIALIZATION = "0.20.0"

@@ -1,9 +1,12 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
     id(PluginIds.ANDROID_LIBRARY)
     id(PluginIds.KOTLIN_ANDROID)
     id(PluginIds.KOTLIN_ANDROID_EXTENSIONS)
     id(PluginIds.KTLINT_ANDROID)
     id(PluginIds.KOTLIN_SERIALIZATION)
+    id(PluginIds.KAPT)
 }
 
 repositories {
@@ -79,6 +82,9 @@ dependencies {
     implementation(Libraries.KOIN_CORE)
     implementation(Libraries.KOIN_SCOPE)
     implementation(Libraries.KOIN_VIEWMODEL)
+
+    implementation(Libraries.GLIDE)
+    kapt(Libraries.GLIDE_COMPILER)
 
     testImplementation(Libraries.JUNIT)
     androidTestImplementation(Libraries.TEST_RUNNER)
