@@ -5,8 +5,11 @@
     <color name="colorPrimaryLight">#7192DE</color>
     <color name="colorPrimaryDark">#1D3459</color>
     <color name="colorAccent">#5F9894</color>
-    <color name="colorFont">#E5F0FF</color>
 
+    <color name="colorLightGrey">#8E8E8E</color>
+    <color name="colorDarkGrey">#4C4C4C</color>
+
+    <color name="colorDivider">#787878</color>
 
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGeneration1">#00BCD4</color>

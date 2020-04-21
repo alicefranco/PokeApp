@@ -7,6 +7,6 @@ data class PokemonDetails(
     val weight: String,
     val images: PokemonImagesResources,
     val types: List<TypeItem>,
-    val moves: List<MoveItem>,
-    val abilities: List<AbilityItem>
+    val moves: List<DetailItem>,
+    val abilities: List<DetailItem>
 )
