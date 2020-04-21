@@ -1,7 +1,6 @@
 package pt.pprojects.pokelist.presentation.pokemondetails
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -17,22 +16,24 @@ import pt.pprojects.pokelist.presentation.pokelist.PokeListActivity
 import pt.pprojects.pokelist.presentation.gone
 import pt.pprojects.pokelist.presentation.model.DetailItem
 import pt.pprojects.pokelist.presentation.model.TypeItem
+import pt.pprojects.pokelist.presentation.showDialog
 import pt.pprojects.pokelist.presentation.visible
 
 class PokemonDetailsActivity : AppCompatActivity() {
     private val pokemonDetailsViewModel: PokemonDetailsViewModel by viewModel()
+    private var pokemonId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokemon_details)
 
-        val pokemonId = intent.getIntExtra(PokeListActivity.POKEMON_ID, 1)
+        pokemonId = intent.getIntExtra(PokeListActivity.POKEMON_ID, 1)
 
         iv_close.setOnClickListener {
             closePokemonDetailsScreen()
         }
 
-        pokemonDetailsViewModel.getPokemonDetails(pokemonId)
+        pokemonId?.let { pokemonDetailsViewModel.getPokemonDetails(it) }
 
         pokemonDetailsViewModel.pokemonDetails.observe(this, Observer {
             handleResult(it)
@@ -47,9 +48,25 @@ class PokemonDetailsActivity : AppCompatActivity() {
             is Result.Loading -> {
             }
             is Result.Error -> {
-                Log.d("ERROR", result.cause.message ?: "")
+                showErrorDialog(getString(R.string.error_title), result.cause.message)
             }
         }
+    }
+
+    private fun showErrorDialog(
+        title: String,
+        message: String?
+    ) {
+        this.showDialog(
+            title,
+            message,
+            positiveAction = {
+                pokemonId?.let { pokemonDetailsViewModel.getPokemonDetails(it) }
+            },
+            negativeAction = {
+                finish()
+            }
+        )
     }
 
     private fun setPokemonDetails(details: PokemonDetails) {
@@ -71,7 +88,11 @@ class PokemonDetailsActivity : AppCompatActivity() {
         layout_pokemon_details.visible()
     }
 
-    fun setOptionalImage(imageView: ImageView, imageContainer: ConstraintLayout, resource: String?) {
+    fun setOptionalImage(
+        imageView: ImageView,
+        imageContainer: ConstraintLayout,
+        resource: String?
+    ) {
         resource?.let {
             if (resource.isNotEmpty()) {
                 setImageWithGlide(imageView, it)
