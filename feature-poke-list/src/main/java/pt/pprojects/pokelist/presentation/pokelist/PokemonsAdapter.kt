@@ -1,8 +1,10 @@
 package pt.pprojects.pokelist.presentation.pokelist
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -13,7 +15,7 @@ import pt.pprojects.pokelist.R
 import pt.pprojects.pokelist.presentation.model.ListItem
 import pt.pprojects.pokelist.presentation.model.PokemonItem
 
-class PokemonsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PokemonsAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val LOADING_ITEM_VIEW = 1
     private val POKEMON_ITEM_VIEW = 2
 
@@ -87,7 +89,7 @@ class PokemonsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 (holder as ViewHolderLoadMoreItem).bind(loadMoreAction)
             }
             POKEMON_ITEM_VIEW -> {
-                (holder as ViewHolderPokemonItem).bind(listItems[position] as PokemonItem, pokemonItemClick)
+                (holder as ViewHolderPokemonItem).bind(context, listItems[position] as PokemonItem, pokemonItemClick)
             }
         }
     }
@@ -96,10 +98,16 @@ class PokemonsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private val pokemonIdTextView: TextView = item.tv_pokemon_number
         private val pokemonNameTextView: TextView = item.tv_pokemon_name
         private val pokemonLayout: ConstraintLayout = item.layout_item_pokemon
+        private val pokemonImageView: ImageView = item.iv_pokemon
 
-        fun bind(pokemon: PokemonItem, itemClick: (pokemonId: Int) -> Unit) {
+        fun bind(context: Context, pokemon: PokemonItem, itemClick: (pokemonId: Int) -> Unit) {
             pokemonIdTextView.text = pokemon.number
             pokemonNameTextView.text = pokemon.name
+
+            val imageResource: Int = context.getResources()
+                .getIdentifier(pokemon.image, "drawable", context.packageName)
+            pokemonImageView.setImageResource(imageResource)
+
             pokemonLayout.setOnClickListener { itemClick(pokemon.number.toInt()) }
         }
     }

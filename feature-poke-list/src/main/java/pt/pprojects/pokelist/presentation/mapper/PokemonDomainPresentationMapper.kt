@@ -10,6 +10,8 @@ class PokemonDomainPresentationMapper {
         const val METER = "m"
         const val KILOGRAM = "Kg"
         const val HIDDEN = " (hidden)"
+        const val IMAGE_PREFFIX = "ic_"
+        const val IMAGE_POKEMON_NOT_FOUND = "ic_0"
 
         const val FIRE_TYPE = "fire"
         const val WATER_TYPE = "water"
@@ -49,8 +51,11 @@ class PokemonDomainPresentationMapper {
         return R.color.colorWhite
     }
 
-    private fun getDefaultPokemonImage(pokemonId: Int): Int {
-        return R.drawable.ic_1
+    private fun getDefaultPokemonImage(pokemonId: Int): String {
+        if (pokemonId <= 807)
+            return IMAGE_PREFFIX + pokemonId.toString()
+        else
+            return IMAGE_POKEMON_NOT_FOUND
     }
 
     fun mapPokemonDetailsToPresentation(

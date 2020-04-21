@@ -35,7 +35,7 @@ class PokeListActivity : AppCompatActivity() {
     }
 
     private fun setupRecycler() {
-        pokemonsAdapter = PokemonsAdapter()
+        pokemonsAdapter = PokemonsAdapter(this)
         pokemonsAdapter.addPokemonItemClick(pokemonItemClick)
         pokemonsAdapter.addLoadMoreAction(loadMoreAction)
 
