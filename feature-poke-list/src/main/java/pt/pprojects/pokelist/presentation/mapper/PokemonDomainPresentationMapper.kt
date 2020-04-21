@@ -41,14 +41,9 @@ class PokemonDomainPresentationMapper {
                 itemType = ListItem.LIST_ITEM,
                 number = it.pokemonId.toString(),
                 name = it.pokemonName.capitalize(),
-                cardColor = getCardColorByGeneration(it.pokemonId),
                 image = getDefaultPokemonImage(it.pokemonId)
             )
         }
-    }
-
-    private fun getCardColorByGeneration(pokemonId: Int): Int {
-        return R.color.colorWhite
     }
 
     private fun getDefaultPokemonImage(pokemonId: Int): String {

@@ -19,7 +19,7 @@ class PokeListViewModel(
 
     private val PAGE_SIZE = 20
     private val START_OFFSET = 0
-    private val TOTAL_POKEMONS = 100 // 984
+    private val TOTAL_POKEMONS = 984
 
     private var offset = START_OFFSET
 
@@ -36,7 +36,7 @@ class PokeListViewModel(
                 .subscribeOn(scheduler)
                 .doOnSubscribe { mutablePokemons.postValue(Result.Loading) }
                 .map<Result<List<PokemonItem>>> { pokemons ->
-                    offset += PAGE_SIZE
+                    updateOffset()
                     Result.Success(
                         pokemonMapper.mapPokemonsToPresentation(pokemons)
                     )
@@ -45,10 +45,13 @@ class PokeListViewModel(
                 .subscribe(mutablePokemons::postValue)
 
             compositeDisposable.add(disposable)
-
-            if (offset == TOTAL_POKEMONS)
-                loadedAll = true
         }
+    }
+
+    private fun updateOffset() {
+        offset += PAGE_SIZE
+        if (offset == TOTAL_POKEMONS)
+            loadedAll = true
     }
 
     override fun onCleared() {

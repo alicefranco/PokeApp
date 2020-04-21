@@ -4,6 +4,5 @@ data class PokemonItem(
     override var itemType: String = "POKEMON_ITEM",
     var number: String,
     var name: String,
-    var image: String,
-    var cardColor: Int
+    var image: String
 ) : ListItem(itemType)

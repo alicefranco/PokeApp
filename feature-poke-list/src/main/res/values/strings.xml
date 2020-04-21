@@ -29,7 +29,9 @@
     <string name="label_moves">MOVES</string>
     <string name="label_abilities">ABILITIES</string>
 
-    <string name="error_title">Sorry! Error occurred.. </string>
     <string name="button_yes">YES</string>
     <string name="button_no">NO</string>
+
+    <string name="error_title">Sorry! Error occurred.. </string>
+    <string name="error_reload_message">\n\nDo you want try reloading again?</string>
 </resources>

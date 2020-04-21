@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -104,17 +103,24 @@ class PokemonsAdapter(private val context: Context) : RecyclerView.Adapter<Recyc
             pokemonIdTextView.text = pokemon.number
             pokemonNameTextView.text = pokemon.name
 
-            val imageResource: Int = context.getResources()
-                .getIdentifier(pokemon.image, "drawable", context.packageName)
-            pokemonImageView.setImageResource(imageResource)
+            pokemonImageView.setImageResource(getImageResource(context, pokemon.image))
+            pokemonImageView.setImageResource(getImageResource(context, pokemon.image))
 
             pokemonLayout.setOnClickListener { itemClick(pokemon.number.toInt()) }
+        }
+
+        private fun getImageResource(context: Context, imageResourceName: String): Int {
+            return context
+                .getResources()
+                .getIdentifier(
+                    imageResourceName,
+                    "drawable",
+                    context.packageName
+                )
         }
     }
 
     class ViewHolderLoadMoreItem(item: View) : RecyclerView.ViewHolder(item) {
-        private val loadingProgressBar: ProgressBar = item.pb_item_load_more
-
         fun bind(loadMoreAction: () -> Unit) {
             loadMoreAction()
         }

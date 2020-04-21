@@ -142,7 +142,10 @@ class PokemonDetailsActivity : AppCompatActivity() {
     }
 
     private fun setImageWithGlide(imageView: ImageView, resource: String) {
-        Glide.with(this).load(resource).into(imageView)
+        Glide.with(this)
+            .load(resource)
+            .placeholder(R.drawable.ic_pokemon_placeholder)
+            .into(imageView)
     }
 
     private fun closePokemonDetailsScreen() {

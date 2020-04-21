@@ -65,7 +65,7 @@ class PokeListActivity : AppCompatActivity() {
     ) {
         this.showDialog(
             title,
-            message,
+            message + getString(R.string.error_reload_message),
             positiveAction = {
                 getPokemons()
             },
