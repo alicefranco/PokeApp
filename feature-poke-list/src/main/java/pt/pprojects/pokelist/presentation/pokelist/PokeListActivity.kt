@@ -2,7 +2,6 @@ package pt.pprojects.pokelist.presentation.pokelist
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +12,7 @@ import pt.pprojects.pokelist.R
 import pt.pprojects.pokelist.presentation.gone
 import pt.pprojects.pokelist.presentation.model.PokemonItem
 import pt.pprojects.pokelist.presentation.pokemondetails.PokemonDetailsActivity
+import pt.pprojects.pokelist.presentation.showDialog
 import pt.pprojects.pokelist.presentation.visible
 
 class PokeListActivity : AppCompatActivity() {
@@ -54,9 +54,25 @@ class PokeListActivity : AppCompatActivity() {
             is Result.Loading -> {
             }
             is Result.Error -> {
-                Log.d("ERROR", result.cause.message ?: "")
+                showErrorDialog(getString(R.string.error_title), result.cause.message)
             }
         }
+    }
+
+    private fun showErrorDialog(
+        title: String,
+        message: String?
+    ) {
+        this.showDialog(
+            title,
+            message,
+            positiveAction = {
+                getPokemons()
+            },
+            negativeAction = {
+                finish()
+            }
+        )
     }
 
     private fun getPokemons() {

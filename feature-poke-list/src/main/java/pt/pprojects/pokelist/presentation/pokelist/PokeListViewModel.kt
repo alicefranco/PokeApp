@@ -36,6 +36,7 @@ class PokeListViewModel(
                 .subscribeOn(scheduler)
                 .doOnSubscribe { mutablePokemons.postValue(Result.Loading) }
                 .map<Result<List<PokemonItem>>> { pokemons ->
+                    offset += PAGE_SIZE
                     Result.Success(
                         pokemonMapper.mapPokemonsToPresentation(pokemons)
                     )
@@ -44,8 +45,6 @@ class PokeListViewModel(
                 .subscribe(mutablePokemons::postValue)
 
             compositeDisposable.add(disposable)
-
-            offset += PAGE_SIZE
 
             if (offset == TOTAL_POKEMONS)
                 loadedAll = true
