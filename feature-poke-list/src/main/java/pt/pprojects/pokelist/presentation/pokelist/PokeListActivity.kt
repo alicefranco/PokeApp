@@ -31,12 +31,13 @@ class PokeListActivity : AppCompatActivity() {
             handleResult(it)
         })
 
-        getPokemons(0)
+        getPokemons()
     }
 
     private fun setupRecycler() {
         pokemonsAdapter = PokemonsAdapter()
         pokemonsAdapter.addPokemonItemClick(pokemonItemClick)
+        pokemonsAdapter.addLoadMoreAction(loadMoreAction)
 
         rv_pokemons.layoutManager = layoutManager
         rv_pokemons.adapter = pokemonsAdapter
@@ -47,7 +48,7 @@ class PokeListActivity : AppCompatActivity() {
             is Result.Success -> {
                 pb_list_loading.gone()
                 rv_pokemons.visible()
-                pokemonsAdapter.addPokemons(result.data)
+                pokemonsAdapter.addPokemons(result.data, pokeListViewModel.loadedAll)
                 pokemonsAdapter.notifyDataSetChanged()
             }
             is Result.Loading -> {
@@ -58,12 +59,16 @@ class PokeListActivity : AppCompatActivity() {
         }
     }
 
-    private fun getPokemons(offset: Int) {
-        pokeListViewModel.getPokemons(offset = offset)
+    private fun getPokemons() {
+        pokeListViewModel.getPokemons()
     }
 
     private val pokemonItemClick: (pokemonId: Int) -> Unit = { pokemonId ->
         openPokemonDetailsScreen(pokemonId)
+    }
+
+    private val loadMoreAction: () -> Unit = {
+        pokeListViewModel.getPokemons(false)
     }
 
     private fun openPokemonDetailsScreen(pokemonId: Int) {

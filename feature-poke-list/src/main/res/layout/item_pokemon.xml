@@ -22,6 +22,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:text="@string/pokemon_number_placeholder"
+            android:textColor="@color/colorDarkGrey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,6 +36,9 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="24dp"
             android:text="@string/pokemon_name_placeholder"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorDarkGrey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_pokemon_number"

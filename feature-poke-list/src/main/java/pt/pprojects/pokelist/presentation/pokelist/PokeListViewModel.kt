@@ -17,24 +17,39 @@ class PokeListViewModel(
 ) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
+    private val PAGE_SIZE = 20
+    private val START_OFFSET = 0
+    private val TOTAL_POKEMONS = 100 // 984
+
+    private var offset = START_OFFSET
+
+    var loadedAll = false
+
     private val mutablePokemons =
         MutableLiveData<Result<List<PokemonItem>>>()
     val pokemons: LiveData<Result<List<PokemonItem>>>
         get() = mutablePokemons
 
-    fun getPokemons(refresh: Boolean = false, offset: Int) {
-        val disposable = pokemonsUseCase.execute(refresh, offset)
-            .subscribeOn(scheduler)
-            .doOnSubscribe { mutablePokemons.postValue(Result.Loading) }
-            .map<Result<List<PokemonItem>>> { pokemons ->
-                Result.Success(
-                    pokemonMapper.mapPokemonsToPresentation(pokemons)
-                )
-            }
-            .onErrorReturn { err -> Result.Error(err) }
-            .subscribe(mutablePokemons::postValue)
+    fun getPokemons(refresh: Boolean = false) {
+        if (offset < TOTAL_POKEMONS) {
+            val disposable = pokemonsUseCase.execute(refresh, offset)
+                .subscribeOn(scheduler)
+                .doOnSubscribe { mutablePokemons.postValue(Result.Loading) }
+                .map<Result<List<PokemonItem>>> { pokemons ->
+                    Result.Success(
+                        pokemonMapper.mapPokemonsToPresentation(pokemons)
+                    )
+                }
+                .onErrorReturn { err -> Result.Error(err) }
+                .subscribe(mutablePokemons::postValue)
 
-        compositeDisposable.add(disposable)
+            compositeDisposable.add(disposable)
+
+            offset += PAGE_SIZE
+
+            if (offset == TOTAL_POKEMONS)
+                loadedAll = true
+        }
     }
 
     override fun onCleared() {

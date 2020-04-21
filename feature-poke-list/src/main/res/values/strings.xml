@@ -3,7 +3,7 @@
 
     <string name="pokemon_number_placeholder">1</string>
     <string name="pokemon_name_placeholder">Bulbasaur</string>
-    <string name="pokemonm_detail_placeholder">DETAIL</string>
+    <string name="pokemonm_detail_placeholder">Detail</string>
     <string name="pokemon_height_placeholder">0.7m</string>
     <string name="pokemon_weight_placeholder">6.9kg</string>
     <string name="pokemon_type_placeholder">FIRE</string>

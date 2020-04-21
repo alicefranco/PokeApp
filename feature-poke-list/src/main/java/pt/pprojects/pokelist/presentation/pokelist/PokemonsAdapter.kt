@@ -3,7 +3,6 @@ package pt.pprojects.pokelist.presentation.pokelist
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -22,16 +21,36 @@ class PokemonsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val loadingItem = ListItem(ListItem.LOADING_ITEM)
 
     private var pokemonItemClick: (pokemonId: Int) -> Unit = {}
+    private var loadMoreAction: () -> Unit = {}
+    private var finished: Boolean = false
 
-    fun addPokemons(pokemonItems: List<PokemonItem>) {
-        val items: ArrayList<ListItem> = ArrayList(pokemonItems)
+    fun addPokemons(pokemonItems: List<PokemonItem>, finished: Boolean) {
+        val newItems: ArrayList<ListItem> = ArrayList(pokemonItems)
 
-        // items.add(loadingItem)
-        listItems = items
+        when (listItems.isEmpty()) {
+            true -> {
+                newItems.add(loadingItem)
+                listItems = newItems
+            }
+            false -> {
+                val currentItems: ArrayList<ListItem> = ArrayList(listItems)
+                currentItems.remove(currentItems.last())
+
+                currentItems.addAll(newItems)
+                if (!finished)
+                    currentItems.add(loadingItem)
+
+                listItems = currentItems
+            }
+        }
     }
 
-    fun addPokemonItemClick(itemClick: (pokemonId: Int) -> Unit) {
-        pokemonItemClick = itemClick
+    fun addPokemonItemClick(itemClickAction: (pokemonId: Int) -> Unit) {
+        pokemonItemClick = itemClickAction
+    }
+
+    fun addLoadMoreAction(clickAction: () -> Unit) {
+        loadMoreAction = clickAction
     }
 
     override fun getItemCount(): Int {
@@ -65,7 +84,7 @@ class PokemonsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         when (holder.itemViewType) {
             LOADING_ITEM_VIEW -> {
-                (holder as ViewHolderLoadMoreItem).bind()
+                (holder as ViewHolderLoadMoreItem).bind(loadMoreAction)
             }
             POKEMON_ITEM_VIEW -> {
                 (holder as ViewHolderPokemonItem).bind(listItems[position] as PokemonItem, pokemonItemClick)
@@ -87,9 +106,9 @@ class PokemonsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class ViewHolderLoadMoreItem(item: View) : RecyclerView.ViewHolder(item) {
         private val loadingProgressBar: ProgressBar = item.pb_item_load_more
-        private val loadMoreImageView: ImageView = item.iv_load_more
 
-        fun bind() {
+        fun bind(loadMoreAction: () -> Unit) {
+            loadMoreAction()
         }
     }
 }

@@ -180,6 +180,7 @@
                 android:layout_height="24dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:tint="@color/colorDarkGrey"
                 android:contentDescription="@string/content_description_close_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
