@@ -19,6 +19,8 @@ object Libraries {
     //TESTING
     const val JUNIT = "androidx.test.ext:junit:${Versions.JUNIT}"
     const val ASSERTJ = "org.assertj:assertj-core:${Versions.ASSERTJ}"
+    const val MOCKITO = "org.mockito:mockito-core:${Versions.MOCKITO}"
+    const val ANDROID_TEST_ARCH_CORE = "androidx.arch.core:core-testing:${Versions.ANDROID_TEST_ARCH_CORE}"
     const val TEST_RUNNER = "androidx.test:runner:${Versions.TEST_RUNNER}"
     const val ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO}"
 

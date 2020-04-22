@@ -88,6 +88,8 @@ dependencies {
 
     testImplementation(Libraries.JUNIT)
     testImplementation(Libraries.ASSERTJ)
+    testImplementation(Libraries.MOCKITO)
+    testImplementation(Libraries.ANDROID_TEST_ARCH_CORE)
     androidTestImplementation(Libraries.TEST_RUNNER)
     androidTestImplementation(Libraries.ESPRESSO)
 }

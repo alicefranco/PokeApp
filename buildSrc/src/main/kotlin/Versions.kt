@@ -6,6 +6,8 @@ object Versions {
     //TESTING
     const val JUNIT = "1.1.1"
     const val ASSERTJ = "3.11.1"
+    const val ANDROID_TEST_ARCH_CORE = "2.1.0"
+    const val MOCKITO = "2.13.0"
     const val TEST_RUNNER = "1.2.0"
     const val ESPRESSO = "3.2.0"
 
