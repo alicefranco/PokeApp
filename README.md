@@ -8,6 +8,7 @@ This application was developed using the guidelines below:
 - S.O.L.I.D Principles
 - Multimodular Application
 - MVVM 
+- Unit Tests
 
 The multimodular architecture was organized with one module per feature, containing its domain, data and presentation.	This division were used if more scalability is needed, as it can be the case, for example, of adding details for Abilities and Moves. For each new feature added, a new module will be added as well.
 
@@ -37,7 +38,8 @@ The following libraries were used:
 
 Possible improvements: 
 
-- UI/Unit tests
+- UI tests
+- Better test coverage
 - Add data persistence (with RoomDB Library, for example)
 - Better implementation of class UsecaseInterface to remove refresh attribute
 
