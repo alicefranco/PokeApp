@@ -1,5 +1,12 @@
 # PokeApp
 
+Versions:
+
+Android Studio: 3.6.2
+Gradle Wrapper: 6.3-all
+Kotlin Plugin: 1.3.72
+Android Gradle Plugin: 3.6.2
+
 This application was developed using the guidelines below:
 
 (as much as possible considering the dev experience)
