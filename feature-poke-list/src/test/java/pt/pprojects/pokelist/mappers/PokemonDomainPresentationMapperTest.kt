@@ -18,15 +18,15 @@ class PokemonDomainPresentationMapperTest {
     @Test
     fun `should return domain pokemons list`() {
         val result = pokemonDomainPresentationMapper
-            .mapPokemonsToPresentation(pokemonsDomainList)
+            .mapPokemonsToPresentation(pokemonsDomain)
 
-        assertThat(result).isEqualTo(expectedPokemonPresentationList)
+        assertThat(result).isEqualTo(expectedPokemonsPresentation)
     }
 
     @Test
     fun `should return empty list`() {
         val result = pokemonDomainPresentationMapper
-            .mapPokemonsToPresentation(pokemonDomainEmptyList)
+            .mapPokemonsToPresentation(pokemonsDomainEmpty)
 
         assertThat(result).isEqualTo(emptyList<PokemonItem>())
     }
@@ -36,10 +36,10 @@ class PokemonDomainPresentationMapperTest {
         val result = pokemonDomainPresentationMapper
             .mapPokemonDetailsToPresentation(pokemonCharsDomain)
 
-        assertThat(result).isEqualTo(expectedPokemonCharPresentation)
+        assertThat(result).isEqualTo(expectedPokemonCharsPresentation)
     }
 
-    private val pokemonsDomainList = listOf(
+    private val pokemonsDomain = listOf(
         Pokemon(
             pokemonName = "Charmander",
             pokemonId = 4
@@ -50,7 +50,7 @@ class PokemonDomainPresentationMapperTest {
         )
     )
 
-    private val expectedPokemonPresentationList = listOf(
+    private val expectedPokemonsPresentation = listOf(
         PokemonItem(
             itemType = ListItem.LIST_ITEM,
             name = "Charmander",
@@ -65,7 +65,7 @@ class PokemonDomainPresentationMapperTest {
         )
     )
 
-    private val pokemonDomainEmptyList = listOf<Pokemon>()
+    private val pokemonsDomainEmpty = listOf<Pokemon>()
 
     private val pokemonCharsDomain = PokemonCharacteristics(
         pokemonId = 4,
@@ -94,7 +94,7 @@ class PokemonDomainPresentationMapperTest {
         )
     )
 
-    private val expectedPokemonCharPresentation = PokemonDetails(
+    private val expectedPokemonCharsPresentation = PokemonDetails(
         pokemonNumber = "#4",
         pokemonName = "Charmander",
         baseExperience = "50",

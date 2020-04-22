@@ -31,20 +31,20 @@ class PokemonDetailsViewModelTest {
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
 
-    private val repository: PokemonRepositoryInterface =
+    private val pokemonRepository: PokemonRepositoryInterface =
         mock(PokemonRepositoryInterface::class.java)
 
-    private lateinit var pokemonCharUsecases: PokemonCharacteristicsUseCase
+    private lateinit var pokemonCharsUsecases: PokemonCharacteristicsUseCase
     private lateinit var pokemonDetailsViewModel: PokemonDetailsViewModel
     private val pokemonDomainPresentationMapper = PokemonDomainPresentationMapper()
 
     @Before
     fun `before each test`() {
-        pokemonCharUsecases = PokemonCharacteristicsUseCase(repository)
+        pokemonCharsUsecases = PokemonCharacteristicsUseCase(pokemonRepository)
 
         pokemonDetailsViewModel = PokemonDetailsViewModel(
             Schedulers.trampoline(),
-            pokemonCharUsecases,
+            pokemonCharsUsecases,
             pokemonDomainPresentationMapper
         )
     }
@@ -52,7 +52,7 @@ class PokemonDetailsViewModelTest {
     @Test
     fun `get pokemon characteristics should return pokemon characteristics`() {
         `when`(
-            repository
+            pokemonRepository
                 .getPokemonCharacteristics(false, pokemonCharsDomain.pokemonId)
         ).thenReturn(Single.just(pokemonCharsDomain))
 
@@ -61,7 +61,7 @@ class PokemonDetailsViewModelTest {
         assertThat(pokemonDetailsViewModel.pokemonDetails.value)
             .isEqualTo(
                 Result.Success(
-                    expectedPokemonCharPresentation
+                    expectedPokemonCharsPresentation
                 )
             )
     }
@@ -69,7 +69,7 @@ class PokemonDetailsViewModelTest {
     @Test
     fun `get pokemon characteristics should return error`() {
         `when`(
-            repository
+            pokemonRepository
                 .getPokemonCharacteristics(false, pokemonCharsDomain.pokemonId)
         ).thenReturn(Single.error(NetworkingError.ConnectionTimeout))
 
@@ -110,7 +110,7 @@ class PokemonDetailsViewModelTest {
         )
     )
 
-    private val expectedPokemonCharPresentation = PokemonDetails(
+    private val expectedPokemonCharsPresentation = PokemonDetails(
         pokemonNumber = "#4",
         pokemonName = "Charmander",
         baseExperience = "50",

@@ -16,15 +16,15 @@ class PokemonRemoteDomainMapperTest {
     @Test
     fun `should return domain pokemons list`() {
         val result = pokemonRemoteDomainMapper
-            .mapPokemonsToDomain(pokemonsResponseList)
+            .mapPokemonsToDomain(pokemonsResponse)
 
-        assertThat(result).isEqualTo(expectedPokemonDomainList)
+        assertThat(result).isEqualTo(expectedPokemonsDomain)
     }
 
     @Test
     fun `should return empty list`() {
         val result = pokemonRemoteDomainMapper
-            .mapPokemonsToDomain(pokemonsResponseEmptyList)
+            .mapPokemonsToDomain(pokemonsResponseEmpty)
 
         assertThat(result).isEqualTo(emptyList<Pokemon>())
     }
@@ -34,22 +34,10 @@ class PokemonRemoteDomainMapperTest {
         val result = pokemonRemoteDomainMapper
             .mapPokemonCharacteristicsToDomain(pokemonCharsResponse)
 
-        assertThat(result).isEqualTo(expectedPokemonCharDomain)
+        assertThat(result).isEqualTo(expectedPokemonCharsDomain)
     }
 
-//    @Test
-//    fun `should return number exception`() {
-//        val result = pokemonRemoteDomainMapper
-//            .mapPokemonsToDomain(pokemonsResponseList)
-//
-//        assertThatExceptionOfType(NumberFormatException::class.java)
-//            .isThrownBy {
-//                pokemonRemoteDomainMapper
-//                    .mapPokemonsToDomain(pokemonsResponseList)
-//            }
-//    }
-
-    private val pokemonsResponseList = listOf(
+    private val pokemonsResponse = listOf(
         PokemonResponse(
             name = "Charmander",
             url = "https://pokeapi.co/api/v2/pokemon/4/"
@@ -60,7 +48,7 @@ class PokemonRemoteDomainMapperTest {
         )
     )
 
-    private val expectedPokemonDomainList = listOf(
+    private val expectedPokemonsDomain = listOf(
         Pokemon(
             pokemonName = "Charmander",
             pokemonId = 4
@@ -71,7 +59,7 @@ class PokemonRemoteDomainMapperTest {
         )
     )
 
-    private val pokemonsResponseEmptyList = listOf<PokemonResponse>()
+    private val pokemonsResponseEmpty = listOf<PokemonResponse>()
 
     private val pokemonCharsResponse = PokemonCharacteristicsResponse(
             id = 4,
@@ -102,7 +90,7 @@ class PokemonRemoteDomainMapperTest {
             )
         )
 
-    private val expectedPokemonCharDomain = PokemonCharacteristics(
+    private val expectedPokemonCharsDomain = PokemonCharacteristics(
         pokemonId = 4,
         pokemonName = "Charmander",
         baseExperience = 50,

@@ -27,18 +27,18 @@ class PokeListViewModelTest {
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
 
-    private val repository: PokemonRepositoryInterface =
+    private val pokemonRepository: PokemonRepositoryInterface =
         mock(PokemonRepositoryInterface::class.java)
 
     private lateinit var pokeListUsecases: PokemonsUseCase
-    private lateinit var pokelistViewModel: PokeListViewModel
+    private lateinit var pokeListViewModel: PokeListViewModel
     private val pokemonDomainPresentationMapper = PokemonDomainPresentationMapper()
 
     @Before
     fun `before each test`() {
-        pokeListUsecases = PokemonsUseCase(repository)
+        pokeListUsecases = PokemonsUseCase(pokemonRepository)
 
-        pokelistViewModel = PokeListViewModel(
+        pokeListViewModel = PokeListViewModel(
             Schedulers.trampoline(),
             pokeListUsecases,
             pokemonDomainPresentationMapper
@@ -47,12 +47,12 @@ class PokeListViewModelTest {
 
     @Test
     fun `get pokemons should return pokemons`() {
-        `when`(repository.getPokemons(false, 0)).thenReturn(Single.just(pokemonsDomainList))
-        pokelistViewModel.getPokemons(false)
+        `when`(pokemonRepository.getPokemons(false, 0)).thenReturn(Single.just(pokemonsDomain))
+        pokeListViewModel.getPokemons(false)
 
-        assertThat(pokelistViewModel.pokemons.value).isEqualTo(
+        assertThat(pokeListViewModel.pokemons.value).isEqualTo(
             Result.Success(
-                expectedPokemonPresentationList
+                expectedPokemonPresentation
             )
         )
     }
@@ -60,21 +60,21 @@ class PokeListViewModelTest {
     @Test
     fun `get pokemons should return error`() {
         `when`(
-            repository.getPokemons(
+            pokemonRepository.getPokemons(
                 false,
                 0
             )
         ).thenReturn(Single.error(NetworkingError.ConnectionTimeout))
-        pokelistViewModel.getPokemons(false)
+        pokeListViewModel.getPokemons(false)
 
-        assertThat(pokelistViewModel.pokemons.value).isEqualToComparingFieldByField(
+        assertThat(pokeListViewModel.pokemons.value).isEqualToComparingFieldByField(
             Result.Error(
                 NetworkingError.ConnectionTimeout
             )
         )
     }
 
-    private val pokemonsDomainList = listOf(
+    private val pokemonsDomain = listOf(
         Pokemon(
             pokemonName = "Charmander",
             pokemonId = 4
@@ -85,7 +85,7 @@ class PokeListViewModelTest {
         )
     )
 
-    private val expectedPokemonPresentationList = listOf(
+    private val expectedPokemonPresentation = listOf(
         PokemonItem(
             itemType = ListItem.LIST_ITEM,
             name = "Charmander",
