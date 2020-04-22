@@ -33,7 +33,7 @@ class PokemonRemoteDomainMapper {
             pokemonId = pokemon.id,
             pokemonName = pokemon.name,
             baseExperience = pokemon.baseExperience,
-            type = getPokemonTypes(pokemon.types),
+            types = getPokemonTypes(pokemon.types),
             images = getPokemonImages(
                 pokemonId = pokemon.id,
                 sprites = pokemon.sprites
@@ -110,8 +110,13 @@ class PokemonRemoteDomainMapper {
         urlBase: String
     ): Int {
         val numberOfCharsToDrop = urlBase.length
-        return url.drop(numberOfCharsToDrop)
-            .dropLast(1)
-            .toInt()
+        if (url.last() == '/') {
+            return url.drop(numberOfCharsToDrop)
+                .dropLast(1)
+                .toInt()
+        } else {
+            return url.drop(numberOfCharsToDrop)
+                .toInt()
+        }
     }
 }

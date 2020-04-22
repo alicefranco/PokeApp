@@ -64,7 +64,7 @@ class PokemonDomainPresentationMapper {
             height = formatHeight(pokemonDetails.height),
             weight = formatWeight(pokemonDetails.weight),
             images = getImageResources(pokemonDetails.images),
-            types = getTypes(pokemonDetails.type),
+            types = getTypes(pokemonDetails.types),
             moves = getMoves(pokemonDetails.moves),
             abilities = getAbilities(pokemonDetails.abilities)
         )

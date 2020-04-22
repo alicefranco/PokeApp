@@ -6,7 +6,7 @@ data class PokemonCharacteristics(
     val pokemonId: Int,
     val pokemonName: String,
     val baseExperience: Int,
-    val type: List<PokemonType>,
+    val types: List<PokemonType>,
     val images: PokemonImages,
     val height: Int,
     val weight: Int,

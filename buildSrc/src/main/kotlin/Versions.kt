@@ -5,6 +5,7 @@ object Versions {
 
     //TESTING
     const val JUNIT = "1.1.1"
+    const val ASSERTJ = "3.11.1"
     const val TEST_RUNNER = "1.2.0"
     const val ESPRESSO = "3.2.0"
 

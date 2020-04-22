@@ -87,6 +87,7 @@ dependencies {
     kapt(Libraries.GLIDE_COMPILER)
 
     testImplementation(Libraries.JUNIT)
+    testImplementation(Libraries.ASSERTJ)
     androidTestImplementation(Libraries.TEST_RUNNER)
     androidTestImplementation(Libraries.ESPRESSO)
 }
