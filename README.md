@@ -48,5 +48,6 @@ Possible improvements:
 - UI tests
 - Better test coverage
 - Add data persistence (with RoomDB Library, for example)
+- Get list image resources directly from github https://github.com/PokeAPI/sprites
 - Better implementation of class UsecaseInterface to remove refresh attribute
 
