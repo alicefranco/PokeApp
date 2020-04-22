@@ -132,7 +132,7 @@ class PokemonDomainPresentationMapper {
         return PokemonImagesResources(
             frontDefault = images.frontDefault,
             frontShiny = images.frontShiny,
-            frontFemale = images.frontDefault,
+            frontFemale = images.frontFemale,
             frontFemaleShiny = images.frontFemaleShiny
         )
     }
