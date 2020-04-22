@@ -10,6 +10,7 @@ class PokemonDomainPresentationMapper {
         const val METER = "m"
         const val KILOGRAM = "Kg"
         const val HIDDEN = " (hidden)"
+        const val NUMBER_MARKER = "#"
         const val IMAGE_PREFFIX = "ic_"
         const val IMAGE_POKEMON_NOT_FOUND = "ic_0"
 
@@ -58,7 +59,8 @@ class PokemonDomainPresentationMapper {
     ): PokemonDetails {
         return PokemonDetails(
             pokemonName = pokemonDetails.pokemonName.capitalize(),
-            pokemonNumber = pokemonDetails.pokemonId.toString(),
+            pokemonNumber = NUMBER_MARKER + pokemonDetails.pokemonId.toString(),
+            baseExperience = pokemonDetails.baseExperience.toString(),
             height = formatHeight(pokemonDetails.height),
             weight = formatWeight(pokemonDetails.weight),
             images = getImageResources(pokemonDetails.images),

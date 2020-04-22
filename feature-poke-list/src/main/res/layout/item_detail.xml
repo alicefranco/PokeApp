@@ -11,7 +11,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/pokemonm_detail_placeholder"
+        android:text="@string/pokemon_detail_placeholder"
         android:textSize="18sp"
         android:textColor="@color/colorDarkGrey"
         app:layout_constraintBottom_toBottomOf="parent"

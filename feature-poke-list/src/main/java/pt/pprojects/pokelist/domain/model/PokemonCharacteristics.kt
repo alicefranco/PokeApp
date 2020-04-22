@@ -5,6 +5,7 @@ import pt.pprojects.domain.ModelInterface
 data class PokemonCharacteristics(
     val pokemonId: Int,
     val pokemonName: String,
+    val baseExperience: Int,
     val type: List<PokemonType>,
     val images: PokemonImages,
     val height: Int,

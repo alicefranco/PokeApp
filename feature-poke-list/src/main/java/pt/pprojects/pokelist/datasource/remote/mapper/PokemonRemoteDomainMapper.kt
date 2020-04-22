@@ -32,6 +32,7 @@ class PokemonRemoteDomainMapper {
         return PokemonCharacteristics(
             pokemonId = pokemon.id,
             pokemonName = pokemon.name,
+            baseExperience = pokemon.baseExperience,
             type = getPokemonTypes(pokemon.types),
             images = getPokemonImages(
                 pokemonId = pokemon.id,

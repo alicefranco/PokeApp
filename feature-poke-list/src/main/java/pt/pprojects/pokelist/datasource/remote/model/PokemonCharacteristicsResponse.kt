@@ -7,6 +7,7 @@ import kotlinx.serialization.Serializable
 data class PokemonCharacteristicsResponse(
     @SerialName("id") val id: Int,
     @SerialName("name") val name: String,
+    @SerialName("base_experience") val baseExperience: Int,
     @SerialName("types") val types: List<PokemonTypeResponse>,
     @SerialName("height") val height: Int,
     @SerialName("weight") val weight: Int,

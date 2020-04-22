@@ -102,10 +102,10 @@
                                 android:layout_marginEnd="8dp"
                                 android:layout_marginBottom="8dp"
                                 android:layout_weight="1"
+                                android:contentDescription="@string/content_description_image_gender_female"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="@+id/iv_female"
-                                app:srcCompat="@drawable/ic_gender_female"
-                                android:contentDescription="@string/content_description_image_gender_female"/>
+                                app:srcCompat="@drawable/ic_gender_female" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -134,10 +134,10 @@
                                 android:layout_height="30dp"
                                 android:layout_marginEnd="8dp"
                                 android:layout_marginBottom="8dp"
+                                android:contentDescription="@string/content_description_image_gender_male_shiny"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:srcCompat="@drawable/ic_gender_male_shiny"
-                                android:contentDescription="@string/content_description_image_gender_male_shiny"/>
+                                app:srcCompat="@drawable/ic_gender_male_shiny" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -165,10 +165,10 @@
                                 android:layout_height="30dp"
                                 android:layout_marginEnd="8dp"
                                 android:layout_marginBottom="8dp"
+                                android:contentDescription="@string/content_description_image_gender_female_shiny"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:srcCompat="@drawable/ic_gender_female_shiny"
-                                android:contentDescription="@string/content_description_image_gender_female_shiny"/>
+                                app:srcCompat="@drawable/ic_gender_female_shiny" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -189,6 +189,46 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_close" />
 
+                <TextView
+                    android:id="@+id/tv_pokemon_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/pokemon_number_placeholder"
+                    android:textColor="@color/colorLightGrey"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_basexp_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_basexp"
+                    android:textColor="@color/colorLightGrey"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_basexp_value"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="@+id/tv_pokemon_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_pokemon_name" />
+
+                <TextView
+                    android:id="@+id/tv_basexp_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/pokemon_basexp_placeholder"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_basexp_label"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_pokemon_name"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tv_basexp_label"
+                    app:layout_constraintTop_toTopOf="@+id/tv_basexp_label" />
+
                 <ImageView
                     android:id="@+id/iv_pokemon"
                     android:layout_width="200dp"
@@ -207,10 +247,10 @@
                     android:layout_height="50dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
+                    android:contentDescription="@string/content_description_image_gender_male"
                     app:layout_constraintBottom_toBottomOf="@+id/iv_pokemon"
                     app:layout_constraintEnd_toEndOf="@+id/iv_pokemon"
-                    app:srcCompat="@drawable/ic_gender_male"
-                    android:contentDescription="@string/content_description_image_gender_male"/>
+                    app:srcCompat="@drawable/ic_gender_male" />
 
                 <TextView
                     android:id="@+id/tv_pokemon_name"
@@ -246,6 +286,7 @@
                     android:id="@+id/tv_height_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:text="@string/label_height"
                     android:textColor="@color/colorLightGrey"
                     android:textStyle="bold"
@@ -296,6 +337,7 @@
                     android:id="@+id/tv_weight_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:text="@string/label_weight"
                     android:textColor="@color/colorLightGrey"
                     android:textStyle="bold"
@@ -390,7 +432,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/dv_types_area"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/dv_height_area"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_pokemon_name">
+                    app:layout_constraintTop_toBottomOf="@+id/tv_basexp_label">
 
                     <LinearLayout
                         android:id="@+id/ll_type1"
@@ -406,8 +448,8 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
-                            app:srcCompat="@drawable/ic_fire"
-                            android:contentDescription="@string/content_description_image_type1"/>
+                            android:contentDescription="@string/content_description_image_type1"
+                            app:srcCompat="@drawable/ic_fire" />
 
                         <TextView
                             android:id="@+id/tv_type1"
@@ -433,8 +475,8 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
-                            app:srcCompat="@drawable/ic_fire"
-                            android:contentDescription="@string/content_description_image_type2"/>
+                            android:contentDescription="@string/content_description_image_type2"
+                            app:srcCompat="@drawable/ic_fire" />
 
                         <TextView
                             android:id="@+id/tv_type2"
@@ -460,8 +502,8 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
-                            app:srcCompat="@drawable/ic_unknown"
-                            android:contentDescription="@string/content_description_image_type_unknown"/>
+                            android:contentDescription="@string/content_description_image_type_unknown"
+                            app:srcCompat="@drawable/ic_unknown" />
 
                         <TextView
                             android:id="@+id/tv_type_unknown"

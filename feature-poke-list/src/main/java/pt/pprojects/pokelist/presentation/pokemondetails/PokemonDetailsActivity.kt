@@ -8,6 +8,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_pokemon_details.*
+import kotlinx.android.synthetic.main.activity_pokemon_details.iv_pokemon
+import kotlinx.android.synthetic.main.activity_pokemon_details.tv_pokemon_name
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pt.pprojects.domain.Result
 import pt.pprojects.pokelist.R
@@ -76,7 +78,9 @@ class PokemonDetailsActivity : AppCompatActivity() {
         setOptionalImage(iv_shiny, cl_male_shiny, details.images.frontShiny)
         setOptionalImage(iv_female_shiny, cl_female_shiny, details.images.frontFemaleShiny)
 
+        tv_pokemon_number.text = details.pokemonNumber
         tv_pokemon_name.text = details.pokemonName
+        tv_basexp_value.text = details.baseExperience
         tv_weight_value.text = details.weight
         tv_height_value.text = details.height
 

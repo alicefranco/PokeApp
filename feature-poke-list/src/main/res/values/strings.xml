@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">PokeApp</string>
 
-    <string name="pokemon_number_placeholder">1</string>
+    <string name="pokemon_number_placeholder">#1</string>
     <string name="pokemon_name_placeholder">Bulbasaur</string>
-    <string name="pokemonm_detail_placeholder">Detail</string>
+    <string name="pokemon_detail_placeholder">Detail</string>
+    <string name="pokemon_basexp_placeholder">178</string>
     <string name="pokemon_height_placeholder">0.7m</string>
     <string name="pokemon_weight_placeholder">6.9kg</string>
     <string name="pokemon_type_placeholder">FIRE</string>
@@ -24,6 +25,7 @@
     <string name="content_description_image_type_unknown">Pokemon type unknown image</string>
     <string name="content_description_dot_item">Icon for abilities and moves items</string>
 
+    <string name="label_basexp">BASE XP</string>
     <string name="label_weight">WEIGHT</string>
     <string name="label_height">HEIGHT</string>
     <string name="label_moves">MOVES</string>

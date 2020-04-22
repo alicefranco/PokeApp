@@ -3,6 +3,7 @@ package pt.pprojects.pokelist.presentation.model
 data class PokemonDetails(
     val pokemonNumber: String,
     val pokemonName: String,
+    val baseExperience: String,
     val height: String,
     val weight: String,
     val images: PokemonImagesResources,
