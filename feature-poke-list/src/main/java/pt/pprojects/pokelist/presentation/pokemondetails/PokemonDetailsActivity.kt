@@ -17,6 +17,7 @@ import pt.pprojects.pokelist.presentation.model.PokemonDetails
 import pt.pprojects.pokelist.presentation.pokelist.PokeListActivity
 import pt.pprojects.pokelist.presentation.gone
 import pt.pprojects.pokelist.presentation.model.DetailItem
+import pt.pprojects.pokelist.presentation.model.PokemonImagesResources
 import pt.pprojects.pokelist.presentation.model.TypeItem
 import pt.pprojects.pokelist.presentation.showDialog
 import pt.pprojects.pokelist.presentation.visible
@@ -78,6 +79,8 @@ class PokemonDetailsActivity : AppCompatActivity() {
         setOptionalImage(iv_shiny, cl_male_shiny, details.images.frontShiny)
         setOptionalImage(iv_female_shiny, cl_female_shiny, details.images.frontFemaleShiny)
 
+        setGenders(details.pokemonNumber, details.images)
+
         tv_pokemon_number.text = details.pokemonNumber
         tv_pokemon_name.text = details.pokemonName
         tv_basexp_value.text = details.baseExperience
@@ -92,7 +95,7 @@ class PokemonDetailsActivity : AppCompatActivity() {
         layout_pokemon_details.visible()
     }
 
-    fun setOptionalImage(
+    private fun setOptionalImage(
         imageView: ImageView,
         imageContainer: ConstraintLayout,
         resource: String?
@@ -102,6 +105,25 @@ class PokemonDetailsActivity : AppCompatActivity() {
                 setImageWithGlide(imageView, it)
                 cl_others.visible()
                 imageContainer.visible()
+            }
+        }
+    }
+
+    private fun setGenders(pokemonNumber: String, images: PokemonImagesResources) {
+        if (images.frontFemale.isNullOrEmpty()) {
+            when (pokemonNumber.drop(1).toInt()) {
+                in 29..31 -> {
+                    iv_gender_default.setImageResource(R.drawable.ic_gender_female)
+                    iv_gender_default_shiny.setImageResource(R.drawable.ic_gender_female_shiny)
+                }
+                in 32..34 -> {
+                    iv_gender_default.setImageResource(R.drawable.ic_gender_male)
+                    iv_gender_default_shiny.setImageResource(R.drawable.ic_gender_male_shiny)
+                }
+                else -> {
+                    iv_gender_default.gone()
+                    iv_gender_default_shiny.setImageResource(R.drawable.ic_genderless_shiny)
+                }
             }
         }
     }
