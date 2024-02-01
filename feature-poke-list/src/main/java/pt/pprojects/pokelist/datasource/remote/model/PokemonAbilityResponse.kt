@@ -1,16 +1,13 @@
 package pt.pprojects.pokelist.datasource.remote.model
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class PokemonAbilityResponse(
-    @SerialName("ability") val ability: PokemonAbility,
-    @SerialName("is_hidden") val isHidden: Boolean
+    @SerializedName("ability") val ability: PokemonAbility,
+    @SerializedName("is_hidden") val isHidden: Boolean
 )
 
-@Serializable
 data class PokemonAbility(
-    @SerialName("name") val name: String,
-    @SerialName("url") val url: String
+    @SerializedName("name") val name: String,
+    @SerializedName("url") val url: String
 )

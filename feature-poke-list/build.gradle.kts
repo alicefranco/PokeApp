@@ -1,11 +1,7 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
 plugins {
     id(PluginIds.ANDROID_LIBRARY)
     id(PluginIds.KOTLIN_ANDROID)
-    id(PluginIds.KOTLIN_ANDROID_EXTENSIONS)
     id(PluginIds.KTLINT_ANDROID)
-    id(PluginIds.KOTLIN_SERIALIZATION)
     id(PluginIds.KAPT)
 }
 
@@ -15,15 +11,13 @@ repositories {
 }
 
 android {
-    compileSdkVersion(AppConfig.COMPILE_SDK_VERSION)
+    namespace = AppConfig.MODULE_POKELIST_ID
+
     buildToolsVersion(AppConfig.BUILD_TOOLS_VERSION)
 
     defaultConfig {
-        minSdkVersion(AppConfig.MIN_SDK_VERSION)
-        targetSdkVersion(AppConfig.TARGET_SDK_VERSION)
-
-        versionCode = AppConfig.VERSION_CODE
-        versionName = AppConfig.VERSION_NAME
+        compileSdk = AppConfig.COMPILE_SDK_VERSION
+        minSdk = AppConfig.MIN_SDK_VERSION
 
         testInstrumentationRunner = AppConfig.TEST_INSTRUMENTATION_RUNNER
     }
@@ -58,6 +52,10 @@ android {
     kotlinOptions {
         jvmTarget = AppConfig.JVM_TARGET
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -76,12 +74,10 @@ dependencies {
     implementation(Libraries.VIEWMODEL)
 
     implementation(Libraries.RX_JAVA)
-    implementation(Libraries.KOTLIN_SERIALIZATION)
     implementation(Libraries.RETROFIT)
+    implementation(Libraries.RETROFIT_CONVERTER_GSON)
 
-    implementation(Libraries.KOIN_CORE)
-    implementation(Libraries.KOIN_SCOPE)
-    implementation(Libraries.KOIN_VIEWMODEL)
+    implementation(Libraries.KOIN)
 
     implementation(Libraries.GLIDE)
     kapt(Libraries.GLIDE_COMPILER)

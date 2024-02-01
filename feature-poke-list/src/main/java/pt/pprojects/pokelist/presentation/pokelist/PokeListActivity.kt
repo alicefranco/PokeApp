@@ -3,12 +3,11 @@ package pt.pprojects.pokelist.presentation.pokelist
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_pokelist.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pt.pprojects.domain.Result
 import pt.pprojects.pokelist.R
+import pt.pprojects.pokelist.databinding.ActivityPokelistBinding
 import pt.pprojects.pokelist.presentation.gone
 import pt.pprojects.pokelist.presentation.model.PokemonItem
 import pt.pprojects.pokelist.presentation.pokemondetails.PokemonDetailsActivity
@@ -21,15 +20,18 @@ class PokeListActivity : AppCompatActivity() {
     private lateinit var pokemonsAdapter: PokemonsAdapter
     private val layoutManager = LinearLayoutManager(this)
 
+    private lateinit var binding: ActivityPokelistBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pokelist)
+        binding = ActivityPokelistBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupRecycler()
 
-        pokeListViewModel.pokemons.observe(this, Observer {
+        pokeListViewModel.pokemons.observe(this) {
             handleResult(it)
-        })
+        }
 
         getPokemons()
     }
@@ -39,15 +41,15 @@ class PokeListActivity : AppCompatActivity() {
         pokemonsAdapter.addPokemonItemClick(pokemonItemClick)
         pokemonsAdapter.addLoadMoreAction(loadMoreAction)
 
-        rv_pokemons.layoutManager = layoutManager
-        rv_pokemons.adapter = pokemonsAdapter
+        binding.rvPokemons.layoutManager = layoutManager
+        binding.rvPokemons.adapter = pokemonsAdapter
     }
 
     private fun handleResult(result: Result<List<PokemonItem>>) {
         when (result) {
             is Result.Success -> {
-                pb_list_loading.gone()
-                rv_pokemons.visible()
+                binding.pbListLoading.gone()
+                binding.rvPokemons.visible()
                 pokemonsAdapter.addPokemons(result.data, pokeListViewModel.loadedAll)
                 pokemonsAdapter.notifyDataSetChanged()
             }

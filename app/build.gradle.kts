@@ -1,19 +1,19 @@
 plugins {
     id(PluginIds.ANDROID_APPLICATION)
     id(PluginIds.KOTLIN_ANDROID)
-    id(PluginIds.KOTLIN_ANDROID_EXTENSIONS)
     id(PluginIds.KTLINT_ANDROID)
 }
 
 base.archivesBaseName = "poke-app-${AppConfig.VERSION_NAME}"
 
 android {
-    compileSdkVersion(AppConfig.COMPILE_SDK_VERSION)
+    namespace = AppConfig.APPLICATION_ID
+
     buildToolsVersion(AppConfig.BUILD_TOOLS_VERSION)
 
     defaultConfig {
-        minSdkVersion(AppConfig.MIN_SDK_VERSION)
-        targetSdkVersion(AppConfig.TARGET_SDK_VERSION)
+        compileSdk = AppConfig.COMPILE_SDK_VERSION
+        minSdk = AppConfig.MIN_SDK_VERSION
 
         applicationId = AppConfig.APPLICATION_ID
         versionCode = AppConfig.VERSION_CODE
@@ -56,6 +56,10 @@ android {
             buildConfigField("String", "BASE_URL", FlavorConfig.Endpoint.PRODUCTION)
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -68,7 +72,7 @@ dependencies {
     implementation(Libraries.CORE_KTX)
     implementation(Libraries.CONSTRAINT_LAYOUT)
 
-    implementation(Libraries.KOIN_ANDROID)
+    implementation(Libraries.KOIN)
 
     implementation(Libraries.RX_JAVA)
 

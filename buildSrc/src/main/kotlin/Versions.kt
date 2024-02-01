@@ -19,17 +19,10 @@ object Versions {
     const val GLIDE = "4.11.0"
 
     //NETWORK
-    const val KOTLIN_SERIALIZATION = "0.20.0"
-
     const val RX_JAVA = "2.2.13"
-
     const val OKHTTP = "4.5.0"
-
     const val RETROFIT = "2.8.1"
-    const val RETROFIT_RX_JAVA_ADAPTER = "2.8.1"
-
-    const val RETROFIT_KOTLIN_SERIALIZATION_CONVERTER = "0.5.0"
 
     //DEPENDENCY INJECTION
-    const val KOIN = "2.0.1"
+    const val KOIN = "3.5.3"
 }

@@ -4,15 +4,12 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_pokemon_details.*
-import kotlinx.android.synthetic.main.activity_pokemon_details.iv_pokemon
-import kotlinx.android.synthetic.main.activity_pokemon_details.tv_pokemon_name
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pt.pprojects.domain.Result
 import pt.pprojects.pokelist.R
+import pt.pprojects.pokelist.databinding.ActivityPokemonDetailsBinding
 import pt.pprojects.pokelist.presentation.model.PokemonDetails
 import pt.pprojects.pokelist.presentation.pokelist.PokeListActivity
 import pt.pprojects.pokelist.presentation.gone
@@ -26,21 +23,24 @@ class PokemonDetailsActivity : AppCompatActivity() {
     private val pokemonDetailsViewModel: PokemonDetailsViewModel by viewModel()
     private var pokemonId: Int? = null
 
+    private lateinit var binding: ActivityPokemonDetailsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pokemon_details)
+        binding = ActivityPokemonDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         pokemonId = intent.getIntExtra(PokeListActivity.POKEMON_ID, 1)
 
-        iv_close.setOnClickListener {
+        binding.ivClose.setOnClickListener {
             closePokemonDetailsScreen()
         }
 
         pokemonId?.let { pokemonDetailsViewModel.getPokemonDetails(it) }
 
-        pokemonDetailsViewModel.pokemonDetails.observe(this, Observer {
+        pokemonDetailsViewModel.pokemonDetails.observe(this) {
             handleResult(it)
-        })
+        }
     }
 
     private fun handleResult(result: Result<PokemonDetails>) {
@@ -73,26 +73,26 @@ class PokemonDetailsActivity : AppCompatActivity() {
     }
 
     private fun setPokemonDetails(details: PokemonDetails) {
-        setImageWithGlide(iv_pokemon, details.images.frontDefault)
+        setImageWithGlide(binding.ivPokemon, details.images.frontDefault)
 
-        setOptionalImage(iv_female, cl_female, details.images.frontFemale)
-        setOptionalImage(iv_shiny, cl_male_shiny, details.images.frontShiny)
-        setOptionalImage(iv_female_shiny, cl_female_shiny, details.images.frontFemaleShiny)
+        setOptionalImage(binding.ivFemale, binding.clFemale, details.images.frontFemale)
+        setOptionalImage(binding.ivShiny, binding.clMaleShiny, details.images.frontShiny)
+        setOptionalImage(binding.ivFemaleShiny, binding.clFemaleShiny, details.images.frontFemaleShiny)
 
         setGenders(details.pokemonNumber, details.images)
 
-        tv_pokemon_number.text = details.pokemonNumber
-        tv_pokemon_name.text = details.pokemonName
-        tv_basexp_value.text = details.baseExperience
-        tv_weight_value.text = details.weight
-        tv_height_value.text = details.height
+        binding.tvPokemonNumber.text = details.pokemonNumber
+        binding.tvPokemonName.text = details.pokemonName
+        binding.tvBasexpValue.text = details.baseExperience
+        binding.tvWeightValue.text = details.weight
+        binding.tvHeightValue.text = details.height
 
         setTypes(details.types)
         setMoves(details.moves)
         setAbilities(details.abilities)
 
-        pb_pokemon_details.gone()
-        layout_pokemon_details.visible()
+        binding.pbPokemonDetails.gone()
+        binding.layoutPokemonDetails.visible()
     }
 
     private fun setOptionalImage(
@@ -103,7 +103,7 @@ class PokemonDetailsActivity : AppCompatActivity() {
         resource?.let {
             if (resource.isNotEmpty()) {
                 setImageWithGlide(imageView, it)
-                cl_others.visible()
+                binding.clOthers.visible()
                 imageContainer.visible()
             }
         }
@@ -113,16 +113,16 @@ class PokemonDetailsActivity : AppCompatActivity() {
         if (images.frontFemale.isNullOrEmpty()) {
             when (pokemonNumber.drop(1).toInt()) {
                 in 29..31 -> {
-                    iv_gender_default.setImageResource(R.drawable.ic_gender_female)
-                    iv_gender_default_shiny.setImageResource(R.drawable.ic_gender_female_shiny)
+                    binding.ivGenderDefault.setImageResource(R.drawable.ic_gender_female)
+                    binding.ivGenderDefaultShiny.setImageResource(R.drawable.ic_gender_female_shiny)
                 }
                 in 32..34 -> {
-                    iv_gender_default.setImageResource(R.drawable.ic_gender_male)
-                    iv_gender_default_shiny.setImageResource(R.drawable.ic_gender_male_shiny)
+                    binding.ivGenderDefault.setImageResource(R.drawable.ic_gender_male)
+                    binding.ivGenderDefaultShiny.setImageResource(R.drawable.ic_gender_male_shiny)
                 }
                 else -> {
-                    iv_gender_default.gone()
-                    iv_gender_default_shiny.setImageResource(R.drawable.ic_genderless_shiny)
+                    binding.ivGenderDefault.gone()
+                    binding.ivGenderDefaultShiny.setImageResource(R.drawable.ic_genderless_shiny)
                 }
             }
         }
@@ -131,20 +131,20 @@ class PokemonDetailsActivity : AppCompatActivity() {
     private fun setTypes(types: List<TypeItem>) {
         when (types.size) {
             1 -> {
-                tv_type1.text = types[0].name
-                iv_type1.setImageResource(types[0].image)
+                binding.tvType1.text = types[0].name
+                binding.ivType1.setImageResource(types[0].image)
             }
             2 -> {
-                tv_type1.text = types[0].name
-                iv_type1.setImageResource(types[0].image)
+                binding.tvType1.text = types[0].name
+                binding.ivType1.setImageResource(types[0].image)
 
-                tv_type2.text = types[1].name
-                iv_type2.setImageResource(types[1].image)
-                ll_type2.visible()
+                binding.tvType2.text = types[1].name
+                binding.ivType2.setImageResource(types[1].image)
+                binding.llType2.visible()
             }
             else -> {
-                ll_type1.gone()
-                ll_type_unknown.visible()
+                binding.llType1.gone()
+                binding.llTypeUnknown.visible()
             }
         }
     }
@@ -154,8 +154,8 @@ class PokemonDetailsActivity : AppCompatActivity() {
         val movesAdapter = DetailsAdapter()
         movesAdapter.addDetails(moves)
 
-        rv_moves.layoutManager = movesLayoutManager
-        rv_moves.adapter = movesAdapter
+        binding.rvMoves.layoutManager = movesLayoutManager
+        binding.rvMoves.adapter = movesAdapter
     }
 
     private fun setAbilities(abilities: List<DetailItem>) {
@@ -163,8 +163,8 @@ class PokemonDetailsActivity : AppCompatActivity() {
         val abilitiesAdapter = DetailsAdapter()
         abilitiesAdapter.addDetails(abilities)
 
-        rv_abilities.layoutManager = abilitiesLayoutManager
-        rv_abilities.adapter = abilitiesAdapter
+        binding.rvAbilities.layoutManager = abilitiesLayoutManager
+        binding.rvAbilities.adapter = abilitiesAdapter
     }
 
     private fun setImageWithGlide(imageView: ImageView, resource: String) {

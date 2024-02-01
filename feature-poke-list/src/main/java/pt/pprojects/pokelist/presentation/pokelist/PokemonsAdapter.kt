@@ -2,15 +2,10 @@ package pt.pprojects.pokelist.presentation.pokelist
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_load_more.view.*
-import kotlinx.android.synthetic.main.item_pokemon.view.*
-import pt.pprojects.pokelist.R
+import pt.pprojects.pokelist.databinding.ItemLoadMoreBinding
+import pt.pprojects.pokelist.databinding.ItemPokemonBinding
 import pt.pprojects.pokelist.presentation.model.ListItem
 import pt.pprojects.pokelist.presentation.model.PokemonItem
 
@@ -70,13 +65,14 @@ class PokemonsAdapter(private val context: Context) : RecyclerView.Adapter<Recyc
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val loadingItemView = LayoutInflater.from(parent.context).inflate(R.layout.item_load_more, parent, false)
-        val pokemonItemView = LayoutInflater.from(parent.context).inflate(R.layout.item_pokemon, parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val bindingLoadingItem = ItemLoadMoreBinding.inflate(inflater, parent, false)
+        val bindingPokemonItem = ItemPokemonBinding.inflate(inflater, parent, false)
 
-        var viewHolder: RecyclerView.ViewHolder = ViewHolderPokemonItem(pokemonItemView)
+        var viewHolder: RecyclerView.ViewHolder = ViewHolderPokemonItem(bindingPokemonItem)
 
         if (viewType == LOADING_ITEM_VIEW) {
-            viewHolder = ViewHolderLoadMoreItem(loadingItemView)
+            viewHolder = ViewHolderLoadMoreItem(bindingLoadingItem)
         }
         return viewHolder
     }
@@ -93,20 +89,16 @@ class PokemonsAdapter(private val context: Context) : RecyclerView.Adapter<Recyc
         }
     }
 
-    class ViewHolderPokemonItem(item: View) : RecyclerView.ViewHolder(item) {
-        private val pokemonIdTextView: TextView = item.tv_pokemon_number
-        private val pokemonNameTextView: TextView = item.tv_pokemon_name
-        private val pokemonLayout: ConstraintLayout = item.layout_item_pokemon
-        private val pokemonImageView: ImageView = item.iv_pokemon
+    class ViewHolderPokemonItem(private val binding: ItemPokemonBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(context: Context, pokemon: PokemonItem, itemClick: (pokemonId: Int) -> Unit) {
-            pokemonIdTextView.text = pokemon.number
-            pokemonNameTextView.text = pokemon.name
+            binding.tvPokemonNumber.text = pokemon.number
+            binding.tvPokemonName.text = pokemon.name
 
-            pokemonImageView.setImageResource(getImageResource(context, pokemon.image))
-            pokemonImageView.setImageResource(getImageResource(context, pokemon.image))
+            binding.ivPokemon.setImageResource(getImageResource(context, pokemon.image))
+            binding.ivPokemon.setImageResource(getImageResource(context, pokemon.image))
 
-            pokemonLayout.setOnClickListener { itemClick(pokemon.number.toInt()) }
+            binding.layoutItemPokemon.setOnClickListener { itemClick(pokemon.number.toInt()) }
         }
 
         private fun getImageResource(context: Context, imageResourceName: String): Int {
@@ -120,7 +112,7 @@ class PokemonsAdapter(private val context: Context) : RecyclerView.Adapter<Recyc
         }
     }
 
-    class ViewHolderLoadMoreItem(item: View) : RecyclerView.ViewHolder(item) {
+    class ViewHolderLoadMoreItem(binding: ItemLoadMoreBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(loadMoreAction: () -> Unit) {
             loadMoreAction()
         }

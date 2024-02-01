@@ -3,21 +3,20 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven(url = "https://plugins.gradle.org/m2/")
     }
     dependencies {
         classpath(PluginDependencies.GRADLE)
         classpath(PluginDependencies.KOTLIN)
         classpath(PluginDependencies.KTLINT)
-        classpath(PluginDependencies.KOTLIN_SERIALIZATION)
     }
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     tasks.withType<KotlinCompile> {

@@ -1,12 +1,10 @@
 package pt.pprojects.pokelist.datasource.remote.model
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class PokemonListResponse(
-    @SerialName("count") val count: Int,
-    @SerialName("previous") val previous: String? = null,
-    @SerialName("next") val next: String? = null,
-    @SerialName("results") val pokemons: List<PokemonResponse>
+    @SerializedName("count") val count: Int,
+    @SerializedName("previous") val previous: String? = null,
+    @SerializedName("next") val next: String? = null,
+    @SerializedName("results") val pokemons: List<PokemonResponse>
 )

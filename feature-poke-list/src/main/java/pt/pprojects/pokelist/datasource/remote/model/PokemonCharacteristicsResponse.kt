@@ -1,17 +1,15 @@
 package pt.pprojects.pokelist.datasource.remote.model
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class PokemonCharacteristicsResponse(
-    @SerialName("id") val id: Int,
-    @SerialName("name") val name: String,
-    @SerialName("base_experience") val baseExperience: Int,
-    @SerialName("types") val types: List<PokemonTypeResponse>,
-    @SerialName("height") val height: Int,
-    @SerialName("weight") val weight: Int,
-    @SerialName("moves") val moves: List<PokemonMoveResponse>,
-    @SerialName("abilities") val abilities: List<PokemonAbilityResponse>,
-    @SerialName("sprites") val sprites: PokemonSpriteResponse
+    @SerializedName("id") val id: Int,
+    @SerializedName("name") val name: String,
+    @SerializedName("base_experience") val baseExperience: Int,
+    @SerializedName("types") val types: List<PokemonTypeResponse>,
+    @SerializedName("height") val height: Int,
+    @SerializedName("weight") val weight: Int,
+    @SerializedName("moves") val moves: List<PokemonMoveResponse>,
+    @SerializedName("abilities") val abilities: List<PokemonAbilityResponse>,
+    @SerializedName("sprites") val sprites: PokemonSpriteResponse
 )
