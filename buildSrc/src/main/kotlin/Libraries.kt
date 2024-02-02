@@ -17,7 +17,7 @@ object Libraries {
     const val VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}"
 
     //TESTING
-    const val JUNIT = "androidx.test.ext:junit:${Versions.JUNIT}"
+    const val JUNIT = "junit:junit:${Versions.JUNIT}"
     const val ASSERTJ = "org.assertj:assertj-core:${Versions.ASSERTJ}"
     const val MOCKITO = "org.mockito:mockito-core:${Versions.MOCKITO}"
     const val ANDROID_TEST_ARCH_CORE = "androidx.arch.core:core-testing:${Versions.ANDROID_TEST_ARCH_CORE}"

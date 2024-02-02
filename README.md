@@ -2,13 +2,13 @@
 
 Versions:
 
-Android Studio: 3.6.2
+Android Studio: Hedgedhog | 2023.1.1 Patch 2
 
-Gradle Wrapper: 6.3-all
+Gradle Wrapper: 8.5
 
-Kotlin Plugin: 1.3.72
+Kotlin Plugin: 1.9.22
 
-Android Gradle Plugin: 3.6.2
+Android Gradle Plugin: 8.2.2
 
 
 This application was developed using the guidelines below:
