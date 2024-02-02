@@ -1,14 +1,14 @@
 package pt.pprojects.network.manager
 
-import io.reactivex.Completable
-import io.reactivex.Single
-import io.reactivex.functions.Function
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Single
 import pt.pprojects.network.ConnectionCheckInterface
 import pt.pprojects.network.error.NetworkingError
+import pt.pprojects.network.error.NetworkingErrorMapper
 
 class NetworkManager(
     private val connectionCheck: ConnectionCheckInterface,
-    private val networkingErrorMapper: Function<Throwable, NetworkingError>
+    private val networkingErrorMapper: NetworkingErrorMapper
 ) : NetworkManagerInterface {
 
     override fun performAndDone(request: Completable): Completable {
@@ -16,16 +16,16 @@ class NetworkManager(
             false -> Completable.error(NetworkingError.NoInternetConnection)
             true -> request
                 .onErrorResumeNext { cause ->
-                    Completable.error(networkingErrorMapper.apply(cause))
+                    Completable.error(networkingErrorMapper.mapThrowableToNetworkingError(cause))
                 }
         }
     }
 
-    override fun <Data> performAndReturnsData(request: Single<Data>): Single<Data> {
+    override fun <Data : Any> performAndReturnsData(request: Single<Data>): Single<Data> {
         return when (connectionCheck.hasInternetConnection()) {
             false -> Single.error(NetworkingError.NoInternetConnection)
             true -> request
-                .onErrorResumeNext { cause -> Single.error(networkingErrorMapper.apply(cause)) }
+                .onErrorResumeNext { cause -> Single.error(networkingErrorMapper.mapThrowableToNetworkingError(cause)) }
         }
     }
 }

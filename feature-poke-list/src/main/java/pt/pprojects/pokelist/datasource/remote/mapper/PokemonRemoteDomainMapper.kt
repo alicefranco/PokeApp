@@ -32,7 +32,7 @@ class PokemonRemoteDomainMapper {
         return PokemonCharacteristics(
             pokemonId = pokemon.id,
             pokemonName = pokemon.name,
-            baseExperience = pokemon.baseExperience,
+            baseExperience = pokemon.base_experience,
             types = getPokemonTypes(pokemon.types),
             images = getPokemonImages(
                 pokemonId = pokemon.id,
@@ -50,14 +50,14 @@ class PokemonRemoteDomainMapper {
         sprites: PokemonSpriteResponse
     ) = PokemonImages(
         pokemonId = pokemonId,
-        frontDefault = sprites.frontDefault,
-        backDefault = sprites.backDefault,
-        frontFemale = sprites.frontFemale,
-        backFemale = sprites.backFemale,
-        frontShiny = sprites.frontShiny,
-        backShiny = sprites.backShiny,
-        frontFemaleShiny = sprites.frontFemaleShiny,
-        backFemaleShiny = sprites.backFemaleShiny
+        frontDefault = sprites.front_default,
+        backDefault = sprites.back_default,
+        frontFemale = sprites.front_female,
+        backFemale = sprites.back_female,
+        frontShiny = sprites.front_shiny,
+        backShiny = sprites.back_shiny,
+        frontFemaleShiny = sprites.front_shiny_female,
+        backFemaleShiny = sprites.back_shiny_female
     )
 
     private fun getPokemonTypes(
@@ -84,7 +84,7 @@ class PokemonRemoteDomainMapper {
                 PokemonAbility(
                     abiltiyId = getId(it.ability.url, ABILITY_URL),
                     abilityName = it.ability.name,
-                    isHidden = it.isHidden
+                    isHidden = it.is_hidden
                 )
             )
         }
@@ -110,12 +110,12 @@ class PokemonRemoteDomainMapper {
         urlBase: String
     ): Int {
         val numberOfCharsToDrop = urlBase.length
-        if (url.last() == '/') {
-            return url.drop(numberOfCharsToDrop)
+        return if (url.last() == '/') {
+            url.drop(numberOfCharsToDrop)
                 .dropLast(1)
                 .toInt()
         } else {
-            return url.drop(numberOfCharsToDrop)
+            url.drop(numberOfCharsToDrop)
                 .toInt()
         }
     }

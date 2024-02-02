@@ -1,6 +1,6 @@
 package pt.pprojects.pokelist.datasource.remote
 
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import pt.pprojects.network.manager.NetworkManagerInterface
 import pt.pprojects.pokelist.data.datasource.PokemonRemoteDataSourceInterface
 import pt.pprojects.pokelist.datasource.remote.mapper.PokemonRemoteDomainMapper
@@ -18,7 +18,7 @@ class PokemonRemoteDataSource(
             pokemonService
                 .getPokemons(offset, limit)
                 .map {
-                    pokemonMapper.mapPokemonsToDomain(it.pokemons)
+                    pokemonMapper.mapPokemonsToDomain(it.results)
                 }
         )
     }

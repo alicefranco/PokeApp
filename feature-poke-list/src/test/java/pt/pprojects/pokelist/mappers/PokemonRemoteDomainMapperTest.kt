@@ -64,7 +64,7 @@ class PokemonRemoteDomainMapperTest {
     private val pokemonCharsResponse = PokemonCharacteristicsResponse(
             id = 4,
             name = "Charmander",
-            baseExperience = 50,
+            base_experience = 50,
             types = listOf(),
             height = 5,
             weight = 15,
@@ -82,11 +82,11 @@ class PokemonRemoteDomainMapperTest {
                         name = "ability",
                         url = "https://pokeapi.co/api/v2/ability/10"
                     ),
-                    isHidden = true
+                    is_hidden = true
                 )
             ),
             sprites = PokemonSpriteResponse(
-                frontDefault = ""
+                front_default = ""
             )
         )
 

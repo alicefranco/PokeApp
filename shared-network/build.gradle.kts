@@ -18,4 +18,5 @@ dependencies {
 
     implementation(Libraries.RETROFIT)
     implementation(Libraries.RETROFIT_CONVERTER_GSON)
+    implementation(Libraries.RETROFIT_RX_JAVA_ADAPTER)
 }

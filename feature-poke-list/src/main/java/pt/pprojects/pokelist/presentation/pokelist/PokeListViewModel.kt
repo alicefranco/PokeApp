@@ -3,8 +3,8 @@ package pt.pprojects.pokelist.presentation.pokelist
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.reactivex.Scheduler
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import pt.pprojects.pokelist.domain.usecase.PokemonsUseCase
 import pt.pprojects.domain.Result
 import pt.pprojects.pokelist.presentation.mapper.PokemonDomainPresentationMapper

@@ -13,7 +13,7 @@ repositories {
 android {
     namespace = AppConfig.MODULE_POKELIST_ID
 
-    buildToolsVersion(AppConfig.BUILD_TOOLS_VERSION)
+    buildToolsVersion = AppConfig.BUILD_TOOLS_VERSION
 
     defaultConfig {
         compileSdk = AppConfig.COMPILE_SDK_VERSION
@@ -76,6 +76,7 @@ dependencies {
     implementation(Libraries.RX_JAVA)
     implementation(Libraries.RETROFIT)
     implementation(Libraries.RETROFIT_CONVERTER_GSON)
+    implementation(Libraries.RETROFIT_RX_JAVA_ADAPTER)
 
     implementation(Libraries.KOIN)
 

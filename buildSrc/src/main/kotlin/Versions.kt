@@ -19,9 +19,9 @@ object Versions {
     const val GLIDE = "4.11.0"
 
     //NETWORK
-    const val RX_JAVA = "2.2.13"
+    const val RX_JAVA = "3.1.8" //updated
     const val OKHTTP = "4.5.0"
-    const val RETROFIT = "2.8.1"
+    const val RETROFIT = "2.9.0" //updated
 
     //DEPENDENCY INJECTION
     const val KOIN = "3.5.3"

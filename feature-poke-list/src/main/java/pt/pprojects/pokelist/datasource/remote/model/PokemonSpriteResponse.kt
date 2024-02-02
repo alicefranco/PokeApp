@@ -1,14 +1,12 @@
 package pt.pprojects.pokelist.datasource.remote.model
 
-import com.google.gson.annotations.SerializedName
-
 data class PokemonSpriteResponse(
-    @SerializedName("front_default") val frontDefault: String,
-    @SerializedName("front_female") val frontFemale: String? = null,
-    @SerializedName("back_default") val backDefault: String? = null,
-    @SerializedName("back_female") val backFemale: String? = null,
-    @SerializedName("front_shiny") val frontShiny: String? = null,
-    @SerializedName("front_shiny_female") val frontFemaleShiny: String? = null,
-    @SerializedName("back_shiny") val backShiny: String? = null,
-    @SerializedName("back_shiny_female") val backFemaleShiny: String? = null
+    val front_default: String,
+    val front_female: String? = null,
+    val back_default: String? = null,
+    val back_female: String? = null,
+    val front_shiny: String? = null,
+    val front_shiny_female: String? = null,
+    val back_shiny: String? = null,
+    val back_shiny_female: String? = null
 )

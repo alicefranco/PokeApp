@@ -1,8 +1,8 @@
 package pt.pprojects.pokelist.viewmodels
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.schedulers.Schedulers
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Rule

@@ -1,6 +1,6 @@
 package pt.pprojects.pokelist.domain.repository
 
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import pt.pprojects.pokelist.domain.model.Pokemon
 import pt.pprojects.pokelist.domain.model.PokemonCharacteristics
 

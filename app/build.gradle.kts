@@ -9,7 +9,7 @@ base.archivesBaseName = "poke-app-${AppConfig.VERSION_NAME}"
 android {
     namespace = AppConfig.APPLICATION_ID
 
-    buildToolsVersion(AppConfig.BUILD_TOOLS_VERSION)
+    buildToolsVersion = AppConfig.BUILD_TOOLS_VERSION
 
     defaultConfig {
         compileSdk = AppConfig.COMPILE_SDK_VERSION
@@ -75,8 +75,10 @@ dependencies {
     implementation(Libraries.KOIN)
 
     implementation(Libraries.RX_JAVA)
-
     implementation(Libraries.RETROFIT)
+    implementation(Libraries.RETROFIT_CONVERTER_GSON)
+    implementation(Libraries.RETROFIT_RX_JAVA_ADAPTER)
+
     implementation(Libraries.OKHTTP)
     implementation(Libraries.OKHTTP_LOGGER)
 
