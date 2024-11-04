@@ -59,6 +59,15 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.KOTLIN_COMPILER_EXT
+    }
+
+    kotlinOptions {
+        jvmTarget = "19"
     }
 }
 
@@ -66,6 +75,16 @@ dependencies {
     implementation(project(ProjectModules.Feature.POKELIST))
     implementation(project(ProjectModules.Shared.DOMAIN))
     implementation(project(ProjectModules.Shared.NETWORK))
+
+    implementation(Libraries.COMPOSE_BOM)
+    implementation(Libraries.COMPOSE_MATERIAL)
+    implementation(Libraries.COMPOSE_PREVIEW)
+    implementation(Libraries.COMPOSE_UI)
+    implementation(Libraries.COMPOSE_RUNTIME)
+    implementation(Libraries.COMPOSE_ACTIVITY)
+    implementation(Libraries.COMPOSE_GRAPHICS)
+
+    debugImplementation(Libraries.COMPOSE_TOOLING)
 
     implementation(Libraries.KOTLIN_STD_LIB)
     implementation(Libraries.APP_COMPAT)
@@ -85,4 +104,5 @@ dependencies {
     testImplementation(Libraries.JUNIT)
     androidTestImplementation(Libraries.TEST_RUNNER)
     androidTestImplementation(Libraries.ESPRESSO)
+    //androidTestImplementation(Libraries.COMPOSE_BOM)
 }

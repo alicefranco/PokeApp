@@ -12,6 +12,9 @@ object Versions {
     const val ESPRESSO = "3.5.0"
 
     //UI
+    const val KOTLIN_COMPILER_EXT = "1.5.10"
+    const val COMPOSE = "1.7.2"
+    const val COMPOSE_MATERIAL = "1.3.1"
     const val LIFECYCLE = "2.7.0"
     const val CONSTRAINT_LAYOUT = "2.1.4"
     const val RECYCLER_VIEW = "1.3.2"

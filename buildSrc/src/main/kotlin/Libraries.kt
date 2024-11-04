@@ -5,6 +5,16 @@ object Libraries {
     const val APP_COMPAT = "androidx.appcompat:appcompat:${Versions.APP_COMPAT}"
     const val CORE_KTX = "androidx.core:core-ktx:${Versions.CORE_KTX}"
 
+    //COMPOSE
+    const val COMPOSE_BOM = "androidx.compose:compose-bom:2024.09.03"
+    const val COMPOSE_MATERIAL = "androidx.compose.material3:material3:${Versions.COMPOSE_MATERIAL}"
+    const val COMPOSE_PREVIEW = "androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE}"
+    const val COMPOSE_TOOLING = "androidx.compose.ui:ui-tooling:${Versions.COMPOSE}"
+    const val COMPOSE_UI = "androidx.compose.ui:ui:${Versions.COMPOSE}"
+    const val COMPOSE_RUNTIME = "androidx.compose.runtime:runtime:${Versions.COMPOSE}"
+    const val COMPOSE_ACTIVITY = "androidx.activity:activity-compose:${Versions.COMPOSE}"
+    const val COMPOSE_GRAPHICS = "androidx.compose.ui:ui-graphics:${Versions.COMPOSE}"
+
     //UI
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT_LAYOUT}"
     const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${Versions.RECYCLER_VIEW}"
