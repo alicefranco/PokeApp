@@ -1,25 +1,31 @@
 package pt.pprojects.pokeapp.presentation
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import pt.pprojects.pokelist.presentation.pokelist.PokeListActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.ui.Modifier
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import pt.pprojects.pokelist.presentation.pokelist.PokeListScreen
+import pt.pprojects.pokelist.presentation.pokelist.PokeListViewModel
 
 class SplashActivity : AppCompatActivity() {
 
+    private val pokeListViewModel: PokeListViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        Handler().postDelayed({
-            startActivity(Intent(this, PokeListActivity::class.java))
-            finish()
-        },
-            DELAY_SIMULATION
-        )
-    }
-
-    private companion object {
-        private const val DELAY_SIMULATION = 1000L
+            setContent {
+                MaterialTheme {
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colorScheme.background
+                    ) {
+                        PokeListScreen(pokeListViewModel)
+                }
+            }
+        }
     }
 }

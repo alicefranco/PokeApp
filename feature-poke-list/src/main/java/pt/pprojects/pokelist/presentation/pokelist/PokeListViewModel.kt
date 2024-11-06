@@ -1,12 +1,10 @@
 package pt.pprojects.pokelist.presentation.pokelist
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import pt.pprojects.pokelist.domain.usecase.PokemonsUseCase
-import pt.pprojects.domain.Result
 import pt.pprojects.pokelist.presentation.mapper.PokemonDomainPresentationMapper
 import pt.pprojects.pokelist.presentation.model.PokemonItem
 
@@ -25,24 +23,31 @@ class PokeListViewModel(
 
     var loadedAll = false
 
-    private val mutablePokemons =
-        MutableLiveData<Result<List<PokemonItem>>>()
-    val pokemons: LiveData<Result<List<PokemonItem>>>
-        get() = mutablePokemons
+//    private val mutablePokemons =
+//        MutableLiveData<Result<List<PokemonItem>>>()
+//    val pokemons: LiveData<Result<List<PokemonItem>>>
+//        get() = mutablePokemons
+
+    private val mutablePokemons = mutableStateOf<List<PokemonItem>>(emptyList())
+
+    init {
+        getPokemons()
+    }
 
     fun getPokemons(refresh: Boolean = false) {
         if (offset < TOTAL_POKEMONS) {
             val disposable = pokemonsUseCase.execute(refresh, offset)
                 .subscribeOn(scheduler)
-                .doOnSubscribe { mutablePokemons.postValue(Result.Loading) }
-                .map<Result<List<PokemonItem>>> { pokemons ->
+                .doOnSubscribe { mutablePokemons }
+                .map { pokemons ->
                     updateOffset()
-                    Result.Success(
-                        pokemonMapper.mapPokemonsToPresentation(pokemons)
-                    )
+                    pokemonMapper.mapPokemonsToPresentation(pokemons)
                 }
-                .onErrorReturn { err -> Result.Error(err) }
-                .subscribe(mutablePokemons::postValue)
+                // TODO - erro
+                //  .onErrorReturn { err -> }
+                .subscribe { list ->
+                    mutablePokemons.value = list
+                }
 
             compositeDisposable.add(disposable)
         }

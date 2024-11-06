@@ -14,6 +14,8 @@ object Libraries {
     const val COMPOSE_RUNTIME = "androidx.compose.runtime:runtime:${Versions.COMPOSE}"
     const val COMPOSE_ACTIVITY = "androidx.activity:activity-compose:${Versions.COMPOSE}"
     const val COMPOSE_GRAPHICS = "androidx.compose.ui:ui-graphics:${Versions.COMPOSE}"
+    const val COMPOSE_COIL = "io.coil-kt.coil3:coil-compose:${Versions.COMPOSE_COIL}"
+    const val COMPOSE_COIL_NETWORK = "io.coil-kt.coil3:coil-network-okhttp:${Versions.COMPOSE_COIL}"
 
     //UI
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT_LAYOUT}"

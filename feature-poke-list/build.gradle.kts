@@ -37,7 +37,7 @@ android {
         }
     }
 
-    flavorDimensions(FlavorConfig.DEFAULT_DIMENSION_NAME)
+    flavorDimensions += FlavorConfig.DEFAULT_DIMENSION_NAME
 
     productFlavors {
         create(FlavorConfig.Flavor.DEVELOPMENT) {
@@ -55,7 +55,17 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose = true
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.KOTLIN_COMPILER_EXT
+    }
+
+    kotlinOptions {
+        jvmTarget = "19"
+    }
+
 }
 
 dependencies {
@@ -65,6 +75,18 @@ dependencies {
     implementation(Libraries.KOTLIN_STD_LIB)
     implementation(Libraries.APP_COMPAT)
     implementation(Libraries.CORE_KTX)
+
+    implementation(Libraries.COMPOSE_BOM)
+    implementation(Libraries.COMPOSE_MATERIAL)
+    implementation(Libraries.COMPOSE_PREVIEW)
+    implementation(Libraries.COMPOSE_UI)
+    implementation(Libraries.COMPOSE_RUNTIME)
+    implementation(Libraries.COMPOSE_ACTIVITY)
+    implementation(Libraries.COMPOSE_GRAPHICS)
+    implementation(Libraries.COMPOSE_COIL)
+    implementation(Libraries.COMPOSE_COIL_NETWORK)
+
+    debugImplementation(Libraries.COMPOSE_TOOLING)
 
     implementation(Libraries.CONSTRAINT_LAYOUT)
     implementation(Libraries.RECYCLER_VIEW)
@@ -89,4 +111,5 @@ dependencies {
     testImplementation(Libraries.ANDROID_TEST_ARCH_CORE)
     androidTestImplementation(Libraries.TEST_RUNNER)
     androidTestImplementation(Libraries.ESPRESSO)
+    androidTestImplementation(Libraries.COMPOSE_BOM)
 }

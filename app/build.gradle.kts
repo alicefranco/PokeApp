@@ -41,7 +41,7 @@ android {
         }
     }
 
-    flavorDimensions(FlavorConfig.DEFAULT_DIMENSION_NAME)
+    flavorDimensions += FlavorConfig.DEFAULT_DIMENSION_NAME
 
     productFlavors {
         create(FlavorConfig.Flavor.DEVELOPMENT) {
@@ -76,6 +76,11 @@ dependencies {
     implementation(project(ProjectModules.Shared.DOMAIN))
     implementation(project(ProjectModules.Shared.NETWORK))
 
+    implementation(Libraries.KOTLIN_STD_LIB)
+    implementation(Libraries.APP_COMPAT)
+    implementation(Libraries.CORE_KTX)
+    implementation(Libraries.CONSTRAINT_LAYOUT)
+
     implementation(Libraries.COMPOSE_BOM)
     implementation(Libraries.COMPOSE_MATERIAL)
     implementation(Libraries.COMPOSE_PREVIEW)
@@ -83,13 +88,10 @@ dependencies {
     implementation(Libraries.COMPOSE_RUNTIME)
     implementation(Libraries.COMPOSE_ACTIVITY)
     implementation(Libraries.COMPOSE_GRAPHICS)
+    implementation(Libraries.COMPOSE_COIL)
+    implementation(Libraries.COMPOSE_COIL_NETWORK)
 
     debugImplementation(Libraries.COMPOSE_TOOLING)
-
-    implementation(Libraries.KOTLIN_STD_LIB)
-    implementation(Libraries.APP_COMPAT)
-    implementation(Libraries.CORE_KTX)
-    implementation(Libraries.CONSTRAINT_LAYOUT)
 
     implementation(Libraries.KOIN)
 
@@ -104,5 +106,4 @@ dependencies {
     testImplementation(Libraries.JUNIT)
     androidTestImplementation(Libraries.TEST_RUNNER)
     androidTestImplementation(Libraries.ESPRESSO)
-    //androidTestImplementation(Libraries.COMPOSE_BOM)
 }
