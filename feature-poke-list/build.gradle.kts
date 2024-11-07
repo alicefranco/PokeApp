@@ -79,6 +79,7 @@ dependencies {
     implementation(Libraries.COMPOSE_BOM)
     implementation(Libraries.COMPOSE_MATERIAL)
     implementation(Libraries.COMPOSE_PREVIEW)
+    implementation(Libraries.COMPOSE_NAVIGATION)
     implementation(Libraries.COMPOSE_UI)
     implementation(Libraries.COMPOSE_RUNTIME)
     implementation(Libraries.COMPOSE_ACTIVITY)

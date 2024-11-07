@@ -7,23 +7,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import pt.pprojects.pokelist.presentation.pokelist.PokeListScreen
-import pt.pprojects.pokelist.presentation.pokelist.PokeListViewModel
+import androidx.navigation.compose.rememberNavController
+import pt.pprojects.pokeapp.navigation.NavigationHost
 
 class MainActivity : ComponentActivity() {
-
-    private val pokeListViewModel: PokeListViewModel by viewModel()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val navController = rememberNavController()
             MaterialTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    PokeListScreen(pokeListViewModel)
+                    NavigationHost(navController)
                 }
             }
         }

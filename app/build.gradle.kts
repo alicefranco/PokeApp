@@ -90,6 +90,7 @@ dependencies {
     implementation(Libraries.COMPOSE_GRAPHICS)
     implementation(Libraries.COMPOSE_COIL)
     implementation(Libraries.COMPOSE_COIL_NETWORK)
+    implementation(Libraries.COMPOSE_NAVIGATION)
 
     debugImplementation(Libraries.COMPOSE_TOOLING)
 

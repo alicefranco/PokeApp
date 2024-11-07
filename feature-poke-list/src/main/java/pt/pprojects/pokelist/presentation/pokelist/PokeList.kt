@@ -22,18 +22,22 @@ import pt.pprojects.pokelist.presentation.model.PokemonItem
 import coil3.compose.AsyncImage
 
 @Composable
-fun PokeList(modifier: Modifier, pokemons: List<PokemonItem>) {
+fun PokeList(
+    modifier: Modifier,
+    pokemons: List<PokemonItem>,
+    onItemClick: () -> Unit
+) {
     Column(
         modifier = modifier
     ) {
         pokemons.forEach { pokemon ->
-            PokemonCard(pokemon)
+            PokemonCard(pokemon, onItemClick)
         }
     }
 }
 
 @Composable
-fun PokemonCard(pokemon: PokemonItem) {
+fun PokemonCard(pokemon: PokemonItem, onItemClick: () -> Unit) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(defaultElevation =16.dp),
         shape = RoundedCornerShape(6.dp),
@@ -41,7 +45,8 @@ fun PokemonCard(pokemon: PokemonItem) {
             left = 16.dp,
             top = 16.dp,
             right = 16.dp
-        )
+        ),
+        onClick = onItemClick
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),

@@ -15,11 +15,15 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import pt.pprojects.pokelist.R
 import pt.pprojects.pokelist.presentation.model.PokemonItem
+import pt.pprojects.pokelist.presentation.pokemondetails.POKE_DETAILS
+
+const val POKE_LIST = "list"
 
 @Composable
-fun PokeListScreen(viewModel: PokeListViewModel) {
+fun PokeListScreen(navController: NavController) {
     Column (
         modifier = Modifier
             .fillMaxWidth()
@@ -54,25 +58,39 @@ fun PokeListScreen(viewModel: PokeListViewModel) {
                         name = "Squirtle",
                         image = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4a47b50e-cf1a-4594-9276-a81dd8cb914a/dfaasvy-f73ddbaa-d4f2-4863-addf-9391cbf363bd.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRhNDdiNTBlLWNmMWEtNDU5NC05Mjc2LWE4MWRkOGNiOTE0YVwvZGZhYXN2eS1mNzNkZGJhYS1kNGYyLTQ4NjMtYWRkZi05MzkxY2JmMzYzYmQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.8IpIN-i91mA5kTKmI7jJQPr7r5LiTBLZSJ0mYhivmac"
                     )
-                )
+                ),
+                onItemClick = {
+                    pokemonItemClick(navController, "1")
+                }
             )
         } else {
-            Box(
-                modifier = Modifier
+            CircularProgress(
+                Modifier
                     .weight(0.92f)
-                    .fillMaxWidth(),
-                contentAlignment = Alignment.Center,
-            ) {
-                CircularProgressIndicator(
-                    modifier = Modifier
-                        .size(48.dp),
-                    strokeWidth = 4.dp,
-                    color = colorResource(id = R.color.colorAccent)
-                )
-            }
+                    .fillMaxWidth()
+            )
         }
 
     }
+}
+
+@Composable
+private fun CircularProgress(modifier: Modifier) {
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.Center,
+    ) {
+        CircularProgressIndicator(
+            modifier = Modifier
+                .size(48.dp),
+            strokeWidth = 4.dp,
+            color = colorResource(id = R.color.colorAccent)
+        )
+    }
+}
+
+private val pokemonItemClick: (navController: NavController, pokemonId: String) -> Unit = { navController, pokemonId ->
+    navController.navigate("${POKE_DETAILS}/${pokemonId}")
 }
 
 //    private fun handleResult(result: Result<List<PokemonItem>>) {
@@ -111,17 +129,3 @@ fun PokeListScreen(viewModel: PokeListViewModel) {
 //        pokeListViewModel.getPokemons()
 //    }
 //
-//    private val pokemonItemClick: (pokemonId: Int) -> Unit = { pokemonId ->
-//        openPokemonDetailsScreen(pokemonId)
-//    }
-//
-//    private fun openPokemonDetailsScreen(pokemonId: Int) {
-//        val intent = Intent(this, PokemonDetailsActivity::class.java)
-//        intent.putExtra(POKEMON_ID, pokemonId)
-//        startActivity(intent)
-//    }
-//
-//    companion object {
-//        const val POKEMON_ID = "POKEMON_ID"
-//    }
-//}
