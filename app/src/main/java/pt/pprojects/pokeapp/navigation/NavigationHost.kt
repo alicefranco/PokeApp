@@ -16,9 +16,9 @@ fun NavigationHost(navController: NavHostController) {
         composable(
             "$POKE_DETAILS/{pokemonId}"
         ) { backStackEntry ->
-            val pokemonId = backStackEntry.arguments?.getString("itemId")
+            val pokemonId = backStackEntry.arguments?.getString("pokemonId")
             pokemonId?.let {
-                PokemonDetailScreen(it)
+                PokemonDetailScreen(it, {})
             }
         }
     }
