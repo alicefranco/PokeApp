@@ -18,7 +18,7 @@ fun NavigationHost(navController: NavHostController) {
         ) { backStackEntry ->
             val pokemonId = backStackEntry.arguments?.getString("itemId")
             pokemonId?.let {
-                PokemonDetailScreen(navController = navController, it)
+                PokemonDetailScreen(it)
             }
         }
     }
