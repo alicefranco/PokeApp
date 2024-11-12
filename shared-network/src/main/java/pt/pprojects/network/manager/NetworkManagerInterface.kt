@@ -1,9 +1,8 @@
 package pt.pprojects.network.manager
 
-import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Single
+import kotlinx.coroutines.flow.Flow
+import pt.pprojects.network.NetworkResult
 
 interface NetworkManagerInterface {
-    fun performAndDone(request: Completable): Completable
-    fun <Data : Any> performAndReturnsData(request: Single<Data>): Single<Data>
+    fun <Data : Any> performAndReturnsData(request: Flow<Data>): Flow<NetworkResult<Data>>
 }

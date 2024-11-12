@@ -17,14 +17,11 @@ object Versions {
     const val COMPOSE_MATERIAL = "1.3.1"
     const val COMPOSE_NAVIGATION = "2.8.3"
     const val COMPOSE_COIL = "3.0.0"
-    const val LIFECYCLE = "2.7.0"
-    const val CONSTRAINT_LAYOUT = "2.1.4"
-    const val RECYCLER_VIEW = "1.3.2"
+    const val LIFECYCLE = "2.8.7"
     const val MATERIAL_DESIGN = "1.11.0"
-    const val GLIDE = "4.16.0"
 
     //NETWORK
-    const val RX_JAVA = "3.1.8"
+    const val COROUTINES = "1.9.0"
     const val OKHTTP = "4.12.0"
     const val RETROFIT = "2.9.0"
 

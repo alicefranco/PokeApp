@@ -87,24 +87,20 @@ dependencies {
     implementation(Libraries.COMPOSE_COIL)
     implementation(Libraries.COMPOSE_COIL_NETWORK)
 
-    debugImplementation(Libraries.COMPOSE_TOOLING)
-
-    implementation(Libraries.CONSTRAINT_LAYOUT)
-    implementation(Libraries.RECYCLER_VIEW)
+    implementation(Libraries.LIFECYCLE_RUNTIME)
+    implementation(Libraries.LIFECYCLE_COMPOSE)
+    implementation(Libraries.LIFECYCLE_VIEWMODEL)
     implementation(Libraries.MATERIAL_DESIGN)
 
-    implementation(Libraries.LIVEDATA)
-    implementation(Libraries.VIEWMODEL)
+    debugImplementation(Libraries.COMPOSE_TOOLING)
 
-    implementation(Libraries.RX_JAVA)
+    implementation(Libraries.COROUTINES_CORE)
+    implementation(Libraries.COROUTINES_ANDROID)
     implementation(Libraries.RETROFIT)
     implementation(Libraries.RETROFIT_CONVERTER_GSON)
     implementation(Libraries.RETROFIT_RX_JAVA_ADAPTER)
 
     implementation(Libraries.KOIN)
-
-    implementation(Libraries.GLIDE)
-    kapt(Libraries.GLIDE_COMPILER)
 
     testImplementation(Libraries.JUNIT)
     testImplementation(Libraries.ASSERTJ)

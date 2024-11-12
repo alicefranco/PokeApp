@@ -1,10 +1,11 @@
 package pt.pprojects.pokelist.data.datasource
 
-import io.reactivex.rxjava3.core.Single
+import kotlinx.coroutines.flow.Flow
+import pt.pprojects.domain.DomainResult
 import pt.pprojects.pokelist.domain.model.Pokemon
 import pt.pprojects.pokelist.domain.model.PokemonCharacteristics
 
 interface PokemonRemoteDataSourceInterface {
-    fun getPokemons(offset: Int): Single<List<Pokemon>>
-    fun getPokemonCharacteristics(pokemonId: Int): Single<PokemonCharacteristics>
+    fun getPokemons(offset: Int): Flow<DomainResult<List<Pokemon>>>
+    fun getPokemonCharacteristics(pokemonId: Int): Flow<DomainResult<PokemonCharacteristics>>
 }

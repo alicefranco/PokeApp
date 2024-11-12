@@ -79,7 +79,6 @@ dependencies {
     implementation(Libraries.KOTLIN_STD_LIB)
     implementation(Libraries.APP_COMPAT)
     implementation(Libraries.CORE_KTX)
-    implementation(Libraries.CONSTRAINT_LAYOUT)
 
     implementation(Libraries.COMPOSE_BOM)
     implementation(Libraries.COMPOSE_MATERIAL)
@@ -96,7 +95,6 @@ dependencies {
 
     implementation(Libraries.KOIN)
 
-    implementation(Libraries.RX_JAVA)
     implementation(Libraries.RETROFIT)
     implementation(Libraries.RETROFIT_CONVERTER_GSON)
     implementation(Libraries.RETROFIT_RX_JAVA_ADAPTER)

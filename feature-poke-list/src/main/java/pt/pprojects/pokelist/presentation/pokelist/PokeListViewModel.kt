@@ -1,19 +1,20 @@
 package pt.pprojects.pokelist.presentation.pokelist
 
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import io.reactivex.rxjava3.core.Scheduler
-import io.reactivex.rxjava3.disposables.CompositeDisposable
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import pt.pprojects.domain.DomainResult
+import pt.pprojects.pokelist.domain.model.UiResult
 import pt.pprojects.pokelist.domain.usecase.PokemonsUseCase
 import pt.pprojects.pokelist.presentation.mapper.PokemonDomainPresentationMapper
 import pt.pprojects.pokelist.presentation.model.PokemonItem
 
 class PokeListViewModel(
-    private val scheduler: Scheduler,
     private val pokemonsUseCase: PokemonsUseCase,
     private val pokemonMapper: PokemonDomainPresentationMapper
 ) : ViewModel() {
-    private val compositeDisposable = CompositeDisposable()
 
     private val PAGE_SIZE = 20
     private val START_OFFSET = 0
@@ -23,33 +24,27 @@ class PokeListViewModel(
 
     var loadedAll = false
 
-//    private val mutablePokemons =
-//        MutableLiveData<Result<List<PokemonItem>>>()
-//    val pokemons: LiveData<Result<List<PokemonItem>>>
-//        get() = mutablePokemons
-
-    private val mutablePokemons = mutableStateOf<List<PokemonItem>>(emptyList())
+    private val _pokemonListStateFlow = MutableStateFlow<UiResult<List<PokemonItem>>>(UiResult.Loading)
+    val pokemonListStateFlow: StateFlow<UiResult<List<PokemonItem>>> = _pokemonListStateFlow
 
     init {
         getPokemons()
     }
 
     fun getPokemons(refresh: Boolean = false) {
-        if (offset < TOTAL_POKEMONS) {
-            val disposable = pokemonsUseCase.execute(refresh, offset)
-                .subscribeOn(scheduler)
-                .doOnSubscribe { mutablePokemons }
-                .map { pokemons ->
-                    updateOffset()
-                    pokemonMapper.mapPokemonsToPresentation(pokemons)
+        viewModelScope.launch {
+            pokemonsUseCase.execute(refresh, offset)
+                .collect { result ->
+                    when (result) {
+                        is DomainResult.Success -> {
+                            val items = pokemonMapper.mapPokemonsToPresentation(result.data)
+                            _pokemonListStateFlow.value = UiResult.Success(items)
+                        }
+                        is DomainResult.Error -> {
+                            _pokemonListStateFlow.value = UiResult.Error(result.cause)
+                        }
+                    }
                 }
-                // TODO - erro
-                //  .onErrorReturn { err -> }
-                .subscribe { list ->
-                    mutablePokemons.value = list
-                }
-
-            compositeDisposable.add(disposable)
         }
     }
 
@@ -57,10 +52,5 @@ class PokeListViewModel(
         offset += PAGE_SIZE
         if (offset == TOTAL_POKEMONS)
             loadedAll = true
-    }
-
-    override fun onCleared() {
-        compositeDisposable.clear()
-        super.onCleared()
     }
 }

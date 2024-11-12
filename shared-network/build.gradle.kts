@@ -12,7 +12,8 @@ repositories {
 dependencies {
     implementation(Libraries.KOTLIN_STD_LIB)
 
-    implementation(Libraries.RX_JAVA)
+    implementation(Libraries.COROUTINES_CORE)
+    implementation(Libraries.COROUTINES_ANDROID)
     implementation(Libraries.OKHTTP)
     implementation(Libraries.OKHTTP_LOGGER)
 

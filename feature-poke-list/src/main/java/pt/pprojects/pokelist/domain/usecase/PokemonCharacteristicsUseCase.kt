@@ -1,15 +1,16 @@
 package pt.pprojects.pokelist.domain.usecase
 
-import io.reactivex.rxjava3.core.Single
+import kotlinx.coroutines.flow.Flow
+import pt.pprojects.domain.DomainResult
 import pt.pprojects.domain.UseCaseInterface
 import pt.pprojects.pokelist.domain.model.PokemonCharacteristics
 import pt.pprojects.pokelist.domain.repository.PokemonRepositoryInterface
 
 class PokemonCharacteristicsUseCase(
     private val pokemonRepository: PokemonRepositoryInterface
-) : UseCaseInterface<Single<PokemonCharacteristics>, Int> {
+) : UseCaseInterface<Flow<DomainResult<PokemonCharacteristics>>, Int> {
 
-    override fun execute(refresh: Boolean, params: Int): Single<PokemonCharacteristics> {
+    override fun execute(refresh: Boolean, params: Int): Flow<DomainResult<PokemonCharacteristics>> {
         return pokemonRepository.getPokemonCharacteristics(pokemonId = params)
     }
 }

@@ -11,7 +11,6 @@ val pokeListPresentationModule = module {
 
     viewModel {
         PokeListViewModel(
-            scheduler = get(),
             pokemonsUseCase = get(),
             pokemonMapper = get()
         )
@@ -19,7 +18,6 @@ val pokeListPresentationModule = module {
 
     viewModel {
         PokemonDetailsViewModel(
-            scheduler = get(),
             pokemonCharacteristicsUseCase = get(),
             pokemonMapper = get()
         )
