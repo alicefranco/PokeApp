@@ -10,7 +10,7 @@ class PokemonsUseCase(
     private val pokemonRepository: PokemonRepositoryInterface
 ) : UseCaseInterface<Flow<DomainResult<List<Pokemon>>>, Int> {
 
-    override fun execute(refresh: Boolean, params: Int): Flow<DomainResult<List<Pokemon>>> {
+    override suspend fun execute(refresh: Boolean, params: Int): Flow<DomainResult<List<Pokemon>>> {
         return pokemonRepository.getPokemons(refresh, offset = params)
     }
 }

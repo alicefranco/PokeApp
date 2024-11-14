@@ -16,7 +16,7 @@ class PokemonRemoteDataSource(
     private val pokemonService: PokemonService,
     private val pokemonMapper: PokemonRemoteDomainMapper
 ) : PokemonRemoteDataSourceInterface {
-    override fun getPokemons(offset: Int): Flow<DomainResult<List<Pokemon>>> {
+    override suspend fun getPokemons(offset: Int): Flow<DomainResult<List<Pokemon>>> {
         return flow {
             networkManager
                 .performAndReturnsData(
@@ -33,7 +33,7 @@ class PokemonRemoteDataSource(
         }
     }
 
-    override fun getPokemonCharacteristics(pokemonId: Int): Flow<DomainResult<PokemonCharacteristics>> {
+    override suspend fun getPokemonCharacteristics(pokemonId: Int): Flow<DomainResult<PokemonCharacteristics>> {
         return flow {
             networkManager.performAndReturnsData(
                 pokemonService.getPokemonCharacteristics(pokemonId)

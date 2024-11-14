@@ -12,7 +12,7 @@ class PokemonRepository(
     private val remoteDataSource: PokemonRemoteDataSourceInterface
 ) : PokemonRepositoryInterface {
 
-    override fun getPokemons(refresh: Boolean, offset: Int): Flow<DomainResult<List<Pokemon>>> {
+    override suspend fun getPokemons(refresh: Boolean, offset: Int): Flow<DomainResult<List<Pokemon>>> {
 //        return when (refresh) {
 //            false -> cacheDataSource.getPokemons()
 //            true -> remoteDataSource.getPokemons(offset)
@@ -20,7 +20,7 @@ class PokemonRepository(
         return remoteDataSource.getPokemons(offset)
     }
 
-    override fun getPokemonCharacteristics(refresh: Boolean, pokemonId: Int): Flow<DomainResult<PokemonCharacteristics>> {
+    override suspend fun getPokemonCharacteristics(refresh: Boolean, pokemonId: Int): Flow<DomainResult<PokemonCharacteristics>> {
 //        return when (refresh) {
 //            false -> cacheDataSource.getPokemonCharacteristics(pokemonId)
 //            true -> remoteDataSource.getPokemonCharacteristics(pokemonId)

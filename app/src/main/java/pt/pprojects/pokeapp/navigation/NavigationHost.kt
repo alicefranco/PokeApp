@@ -4,21 +4,25 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import org.koin.androidx.compose.koinViewModel
 import pt.pprojects.pokelist.presentation.pokelist.POKE_LIST
 import pt.pprojects.pokelist.presentation.pokelist.PokeListScreen
+import pt.pprojects.pokelist.presentation.pokelist.PokeListViewModel
 import pt.pprojects.pokelist.presentation.pokemondetails.POKE_DETAILS
 import pt.pprojects.pokelist.presentation.pokemondetails.PokemonDetailScreen
 
 @Composable
 fun NavigationHost(navController: NavHostController) {
+    val viewModel: PokeListViewModel = koinViewModel()
+
     NavHost(navController = navController, startDestination = POKE_LIST) {
-        composable(POKE_LIST) { PokeListScreen(navController = navController) }
+        composable(POKE_LIST) { PokeListScreen(navController = navController, viewModel = viewModel) }
         composable(
             "$POKE_DETAILS/{pokemonId}"
         ) { backStackEntry ->
             val pokemonId = backStackEntry.arguments?.getString("pokemonId")
             pokemonId?.let {
-                PokemonDetailScreen(it, {})
+                PokemonDetailScreen(it) { navController.popBackStack() }
             }
         }
     }

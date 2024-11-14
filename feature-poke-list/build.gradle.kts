@@ -86,6 +86,7 @@ dependencies {
     implementation(Libraries.COMPOSE_GRAPHICS)
     implementation(Libraries.COMPOSE_COIL)
     implementation(Libraries.COMPOSE_COIL_NETWORK)
+    implementation(Libraries.COMPOSE_LIFECYCLE)
 
     implementation(Libraries.LIFECYCLE_RUNTIME)
     implementation(Libraries.LIFECYCLE_COMPOSE)
@@ -101,6 +102,8 @@ dependencies {
     implementation(Libraries.RETROFIT_RX_JAVA_ADAPTER)
 
     implementation(Libraries.KOIN)
+    implementation(Libraries.KOIN_CORE)
+    implementation(Libraries.KOIN_COMPOSE)
 
     testImplementation(Libraries.JUNIT)
     testImplementation(Libraries.ASSERTJ)

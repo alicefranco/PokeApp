@@ -30,11 +30,9 @@ val networkModule = module {
     }
 
     factory<HttpLoggingInterceptor.Logger> {
-        object : HttpLoggingInterceptor.Logger {
-            override fun log(message: String) {
-                if (BuildConfig.DEBUG) {
-                    d("DEBUG", message)
-                }
+        HttpLoggingInterceptor.Logger { message ->
+            if (BuildConfig.DEBUG) {
+                d("DEBUG", message)
             }
         }
     }

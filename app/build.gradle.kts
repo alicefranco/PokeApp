@@ -90,10 +90,13 @@ dependencies {
     implementation(Libraries.COMPOSE_COIL)
     implementation(Libraries.COMPOSE_COIL_NETWORK)
     implementation(Libraries.COMPOSE_NAVIGATION)
+    implementation(Libraries.COMPOSE_LIFECYCLE)
 
     debugImplementation(Libraries.COMPOSE_TOOLING)
 
     implementation(Libraries.KOIN)
+    implementation(Libraries.KOIN_CORE)
+    implementation(Libraries.KOIN_COMPOSE)
 
     implementation(Libraries.RETROFIT)
     implementation(Libraries.RETROFIT_CONVERTER_GSON)

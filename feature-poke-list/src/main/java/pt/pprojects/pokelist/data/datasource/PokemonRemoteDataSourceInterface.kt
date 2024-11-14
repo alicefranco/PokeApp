@@ -6,6 +6,6 @@ import pt.pprojects.pokelist.domain.model.Pokemon
 import pt.pprojects.pokelist.domain.model.PokemonCharacteristics
 
 interface PokemonRemoteDataSourceInterface {
-    fun getPokemons(offset: Int): Flow<DomainResult<List<Pokemon>>>
-    fun getPokemonCharacteristics(pokemonId: Int): Flow<DomainResult<PokemonCharacteristics>>
+    suspend fun getPokemons(offset: Int): Flow<DomainResult<List<Pokemon>>>
+    suspend fun getPokemonCharacteristics(pokemonId: Int): Flow<DomainResult<PokemonCharacteristics>>
 }

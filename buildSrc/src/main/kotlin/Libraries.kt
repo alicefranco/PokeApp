@@ -17,6 +17,7 @@ object Libraries {
     const val COMPOSE_GRAPHICS = "androidx.compose.ui:ui-graphics:${Versions.COMPOSE}"
     const val COMPOSE_COIL = "io.coil-kt.coil3:coil-compose:${Versions.COMPOSE_COIL}"
     const val COMPOSE_COIL_NETWORK = "io.coil-kt.coil3:coil-network-okhttp:${Versions.COMPOSE_COIL}"
+    const val COMPOSE_LIFECYCLE = "androidx.lifecycle:lifecycle-runtime-compose:${Versions.COMPOSE}"
 
     //LIFECYCLE
     const val LIFECYCLE_RUNTIME = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.LIFECYCLE}"
@@ -44,4 +45,6 @@ object Libraries {
 
     //DEPENDENCY INJECTION
     const val KOIN = "io.insert-koin:koin-android:${Versions.KOIN}"
+    const val KOIN_CORE = "io.insert-koin:koin-core:${Versions.KOIN}"
+    const val KOIN_COMPOSE = "io.insert-koin:koin-androidx-compose:${Versions.KOIN}"
 }

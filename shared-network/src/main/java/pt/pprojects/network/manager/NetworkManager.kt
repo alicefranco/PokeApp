@@ -14,14 +14,12 @@ class NetworkManager(
     private val networkingErrorMapper: NetworkingErrorMapper
 ) : NetworkManagerInterface {
 
-    override fun <Data : Any> performAndReturnsData(request: Flow<Data>): Flow<NetworkResult<Data>> {
+    override suspend fun <Data : Any> performAndReturnsData(data: Data): Flow<NetworkResult<Data>> {
         return when (connectionCheck.hasInternetConnection()) {
             false -> flow { emit(NetworkResult.Error(NetworkingError.NoInternetConnection)) }
             true ->  flow {
                 try {
-                    request.collect { data ->
-                        emit(NetworkResult.Success(data))
-                    }
+                    emit(NetworkResult.Success(data))
                 } catch (e: Exception) {
                     e.cause?.let {
                         emit(NetworkResult.Error(networkingErrorMapper.mapThrowableToNetworkingError(it)))

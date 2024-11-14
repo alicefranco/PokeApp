@@ -10,7 +10,7 @@ class PokemonCharacteristicsUseCase(
     private val pokemonRepository: PokemonRepositoryInterface
 ) : UseCaseInterface<Flow<DomainResult<PokemonCharacteristics>>, Int> {
 
-    override fun execute(refresh: Boolean, params: Int): Flow<DomainResult<PokemonCharacteristics>> {
+    override suspend fun execute(refresh: Boolean, params: Int): Flow<DomainResult<PokemonCharacteristics>> {
         return pokemonRepository.getPokemonCharacteristics(pokemonId = params)
     }
 }
