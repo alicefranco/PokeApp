@@ -1,10 +1,13 @@
 package pt.pprojects.pokelist.presentation.pokemondetails
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import pt.pprojects.pokelist.domain.usecase.PokemonCharacteristicsUseCase
 import pt.pprojects.pokelist.presentation.mapper.PokemonDomainPresentationMapper
+import javax.inject.Inject
 
-class PokemonDetailsViewModel(
+@HiltViewModel
+class PokemonDetailsViewModel @Inject constructor(
     private val pokemonCharacteristicsUseCase: PokemonCharacteristicsUseCase,
     private val pokemonMapper: PokemonDomainPresentationMapper
 ) : ViewModel() {

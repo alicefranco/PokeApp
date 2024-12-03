@@ -41,11 +41,12 @@ MVVM architecture were used to separate the concerns between the presentation an
 All activities (VIEW) only hold presentation information, all repositories hold the data (MODEL) and know nothing about activities, all viewmodels (VIEWMODEL) deal with the interaction between activities and repositories.
 
 The following libraries were used: 
-- RxJava (reactive)
+
+- Flow (reactive)
 - Retrofit and OKHTTP (network requests)
-- Koin (dependency injection)
-- Kotlin serialization (JSON serialization)
-- Live Data and ViewModel (ui state management)
+- Hilt (dependency injection)
+- ViewModel (UI state management)
+- Compose (UI)
 
 Possible improvements: 
 
@@ -54,4 +55,18 @@ Possible improvements:
 - Add data persistence (with RoomDB Library, for example)
 - Get list image resources directly from github https://github.com/PokeAPI/sprites
 - Better implementation of class UsecaseInterface to remove refresh attribute
+- Add git action to run lint before commit
+- Configure proguard
+
+Refactoring:
+
+- Add pokemon list pagination
+- Remove mocks in pokemon details screen
+- Uncomment tests
+
+Planned new features:
+- Add login with Firebase
+- Save favorites
+
+
 

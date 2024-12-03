@@ -10,8 +10,9 @@ import pt.pprojects.pokelist.datasource.remote.mapper.PokemonRemoteDomainMapper
 import pt.pprojects.pokelist.datasource.remote.service.PokemonService
 import pt.pprojects.pokelist.domain.model.Pokemon
 import pt.pprojects.pokelist.domain.model.PokemonCharacteristics
+import javax.inject.Inject
 
-class PokemonRemoteDataSource(
+class PokemonRemoteDataSource @Inject constructor(
     private val networkManager: NetworkManagerInterface,
     private val pokemonService: PokemonService,
     private val pokemonMapper: PokemonRemoteDomainMapper

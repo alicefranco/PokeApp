@@ -8,8 +8,9 @@ buildscript {
     }
     dependencies {
         classpath(PluginDependencies.GRADLE)
-        classpath(PluginDependencies.KOTLIN)
+        classpath(PluginDependencies.KOTLIN_GRADLE_PLUGIN)
         classpath(PluginDependencies.KTLINT)
+        classpath(PluginDependencies.HILT_GRADLE_PLUGIN)
     }
 }
 
@@ -25,5 +26,5 @@ allprojects {
 }
 
 tasks.register("clean").configure {
-    delete(rootProject.buildDir)
+    delete(rootProject.layout.buildDirectory)
 }

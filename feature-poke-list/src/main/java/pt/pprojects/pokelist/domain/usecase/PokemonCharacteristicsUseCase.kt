@@ -5,8 +5,9 @@ import pt.pprojects.domain.DomainResult
 import pt.pprojects.domain.UseCaseInterface
 import pt.pprojects.pokelist.domain.model.PokemonCharacteristics
 import pt.pprojects.pokelist.domain.repository.PokemonRepositoryInterface
+import javax.inject.Inject
 
-class PokemonCharacteristicsUseCase(
+class PokemonCharacteristicsUseCase @Inject constructor(
     private val pokemonRepository: PokemonRepositoryInterface
 ) : UseCaseInterface<Flow<DomainResult<PokemonCharacteristics>>, Int> {
 

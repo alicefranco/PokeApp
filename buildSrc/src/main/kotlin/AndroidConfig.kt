@@ -22,6 +22,7 @@ object AndroidVersions {
     const val KOTLIN = "1.9.22"
     const val ANDROID_GRADLE = "8.2.2"
     const val KTLINT = "8.2.0"
+    const val HILT_GRADLE = "2.51.1"
 }
 
 object PluginIds {
@@ -32,11 +33,13 @@ object PluginIds {
     const val JAVA_LIBRARY = "java-library"
     const val KTLINT_ANDROID = "org.jlleitschuh.gradle.ktlint"
     const val KAPT = "kotlin-kapt"
+    const val HILT = "dagger.hilt.android.plugin"
 }
 
 object PluginDependencies {
     const val GRADLE = "com.android.tools.build:gradle:${AndroidVersions.ANDROID_GRADLE}"
-    const val KOTLIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${AndroidVersions.KOTLIN}"
+    const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${AndroidVersions.KOTLIN}"
     const val KTLINT = "org.jlleitschuh.gradle:ktlint-gradle:${AndroidVersions.KTLINT}"
+    const val HILT_GRADLE_PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:${AndroidVersions.HILT_GRADLE}"
 }
 

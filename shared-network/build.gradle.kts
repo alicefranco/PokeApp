@@ -16,8 +16,9 @@ dependencies {
     implementation(Libraries.COROUTINES_ANDROID)
     implementation(Libraries.OKHTTP)
     implementation(Libraries.OKHTTP_LOGGER)
-
     implementation(Libraries.RETROFIT)
     implementation(Libraries.RETROFIT_CONVERTER_GSON)
     implementation(Libraries.RETROFIT_RX_JAVA_ADAPTER)
+    
+    implementation(Libraries.JAVAX)
 }

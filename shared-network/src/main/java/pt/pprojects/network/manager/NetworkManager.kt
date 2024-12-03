@@ -1,5 +1,6 @@
 package pt.pprojects.network.manager
 
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -9,7 +10,7 @@ import pt.pprojects.network.NetworkResult
 import pt.pprojects.network.error.NetworkingError
 import pt.pprojects.network.error.NetworkingErrorMapper
 
-class NetworkManager(
+class NetworkManager @Inject constructor(
     private val connectionCheck: ConnectionCheckInterface,
     private val networkingErrorMapper: NetworkingErrorMapper
 ) : NetworkManagerInterface {

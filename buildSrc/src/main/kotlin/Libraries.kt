@@ -5,6 +5,10 @@ object Libraries {
     const val APP_COMPAT = "androidx.appcompat:appcompat:${Versions.APP_COMPAT}"
     const val CORE_KTX = "androidx.core:core-ktx:${Versions.CORE_KTX}"
 
+    //OTHERS
+    const val ACTIVITY_KTX = "androidx.activity:activity-ktx:${Versions.ACTIVITY_KTX}"
+    const val JAVAX = "javax.inject:javax.inject:${Versions.JAVAX}"
+
     //COMPOSE
     const val COMPOSE_BOM = "androidx.compose:compose-bom:2024.09.03"
     const val COMPOSE_MATERIAL = "androidx.compose.material3:material3:${Versions.COMPOSE_MATERIAL}"
@@ -25,14 +29,6 @@ object Libraries {
     const val LIFECYCLE_COMPOSE = "androidx.lifecycle:lifecycle-runtime-compose:${Versions.LIFECYCLE}"
     const val MATERIAL_DESIGN = "com.google.android.material:material:${Versions.MATERIAL_DESIGN}"
 
-    //TESTING
-    const val JUNIT = "junit:junit:${Versions.JUNIT}"
-    const val ASSERTJ = "org.assertj:assertj-core:${Versions.ASSERTJ}"
-    const val MOCKITO = "org.mockito:mockito-core:${Versions.MOCKITO}"
-    const val ANDROID_TEST_ARCH_CORE = "androidx.arch.core:core-testing:${Versions.ANDROID_TEST_ARCH_CORE}"
-    const val TEST_RUNNER = "androidx.test:runner:${Versions.TEST_RUNNER}"
-    const val ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO}"
-
     //NETWORK
     const val COROUTINES_CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.COROUTINES}"
     const val COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINES}"
@@ -44,7 +40,16 @@ object Libraries {
     const val RETROFIT_RX_JAVA_ADAPTER = "com.squareup.retrofit2:adapter-rxjava3:${Versions.RETROFIT}"
 
     //DEPENDENCY INJECTION
-    const val KOIN = "io.insert-koin:koin-android:${Versions.KOIN}"
-    const val KOIN_CORE = "io.insert-koin:koin-core:${Versions.KOIN}"
-    const val KOIN_COMPOSE = "io.insert-koin:koin-androidx-compose:${Versions.KOIN}"
+    const val HILT = "com.google.dagger:hilt-android:${Versions.HILT}"
+    const val HILT_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
+    const val HILT_COMPOSE = "androidx.hilt:hilt-navigation-compose:${Versions.HILT_COMPOSE}"
+
+    //TESTING
+    const val JUNIT = "junit:junit:${Versions.JUNIT}"
+    const val ASSERTJ = "org.assertj:assertj-core:${Versions.ASSERTJ}"
+    const val MOCKITO = "org.mockito:mockito-core:${Versions.MOCKITO}"
+    const val ANDROID_TEST_ARCH_CORE = "androidx.arch.core:core-testing:${Versions.ANDROID_TEST_ARCH_CORE}"
+    const val TEST_RUNNER = "androidx.test:runner:${Versions.TEST_RUNNER}"
+    const val ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO}"
+
 }

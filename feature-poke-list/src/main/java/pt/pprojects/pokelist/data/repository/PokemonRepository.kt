@@ -6,8 +6,9 @@ import pt.pprojects.pokelist.data.datasource.PokemonRemoteDataSourceInterface
 import pt.pprojects.pokelist.domain.model.Pokemon
 import pt.pprojects.pokelist.domain.model.PokemonCharacteristics
 import pt.pprojects.pokelist.domain.repository.PokemonRepositoryInterface
+import javax.inject.Inject
 
-class PokemonRepository(
+class PokemonRepository @Inject constructor(
     // private val cacheDataSource: PokemonCacheDataSourceInterface,
     private val remoteDataSource: PokemonRemoteDataSourceInterface
 ) : PokemonRepositoryInterface {

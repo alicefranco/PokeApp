@@ -2,6 +2,7 @@ package pt.pprojects.pokelist.presentation.pokelist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -10,8 +11,10 @@ import pt.pprojects.pokelist.domain.model.UiResult
 import pt.pprojects.pokelist.domain.usecase.PokemonsUseCase
 import pt.pprojects.pokelist.presentation.mapper.PokemonDomainPresentationMapper
 import pt.pprojects.pokelist.presentation.model.PokemonItem
+import javax.inject.Inject
 
-class PokeListViewModel(
+@HiltViewModel
+class PokeListViewModel @Inject constructor(
     private val pokemonsUseCase: PokemonsUseCase,
     private val pokemonMapper: PokemonDomainPresentationMapper
 ) : ViewModel() {

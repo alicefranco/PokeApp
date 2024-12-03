@@ -2,9 +2,9 @@ plugins {
     id(PluginIds.ANDROID_APPLICATION)
     id(PluginIds.KOTLIN_ANDROID)
     id(PluginIds.KTLINT_ANDROID)
+    id(PluginIds.KAPT)
+    id(PluginIds.HILT)
 }
-
-base.archivesBaseName = "poke-app-${AppConfig.VERSION_NAME}"
 
 android {
     namespace = AppConfig.APPLICATION_ID
@@ -69,6 +69,10 @@ android {
     kotlinOptions {
         jvmTarget = "19"
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -79,6 +83,7 @@ dependencies {
     implementation(Libraries.KOTLIN_STD_LIB)
     implementation(Libraries.APP_COMPAT)
     implementation(Libraries.CORE_KTX)
+    implementation(Libraries.ACTIVITY_KTX)
 
     implementation(Libraries.COMPOSE_BOM)
     implementation(Libraries.COMPOSE_MATERIAL)
@@ -94,16 +99,16 @@ dependencies {
 
     debugImplementation(Libraries.COMPOSE_TOOLING)
 
-    implementation(Libraries.KOIN)
-    implementation(Libraries.KOIN_CORE)
-    implementation(Libraries.KOIN_COMPOSE)
-
     implementation(Libraries.RETROFIT)
     implementation(Libraries.RETROFIT_CONVERTER_GSON)
     implementation(Libraries.RETROFIT_RX_JAVA_ADAPTER)
 
     implementation(Libraries.OKHTTP)
     implementation(Libraries.OKHTTP_LOGGER)
+
+    implementation(Libraries.HILT)
+    implementation(Libraries.HILT_COMPOSE)
+    kapt(Libraries.HILT_COMPILER)
 
     testImplementation(Libraries.JUNIT)
     androidTestImplementation(Libraries.TEST_RUNNER)

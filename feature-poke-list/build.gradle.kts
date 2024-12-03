@@ -97,13 +97,14 @@ dependencies {
 
     implementation(Libraries.COROUTINES_CORE)
     implementation(Libraries.COROUTINES_ANDROID)
+
     implementation(Libraries.RETROFIT)
     implementation(Libraries.RETROFIT_CONVERTER_GSON)
     implementation(Libraries.RETROFIT_RX_JAVA_ADAPTER)
 
-    implementation(Libraries.KOIN)
-    implementation(Libraries.KOIN_CORE)
-    implementation(Libraries.KOIN_COMPOSE)
+    implementation(Libraries.HILT)
+    implementation(Libraries.HILT_COMPOSE)
+    kapt(Libraries.HILT_COMPILER)
 
     testImplementation(Libraries.JUNIT)
     testImplementation(Libraries.ASSERTJ)

@@ -3,6 +3,10 @@ object Versions {
     const val APP_COMPAT = "1.6.1"
     const val CORE_KTX = "1.12.0"
 
+    //OTHERS
+    const val ACTIVITY_KTX = "1.9.3"
+    const val JAVAX = "1"
+
     //TESTING
     const val JUNIT = "4.13.2"
     const val ASSERTJ = "3.25.2"
@@ -26,5 +30,6 @@ object Versions {
     const val RETROFIT = "2.9.0"
 
     //DEPENDENCY INJECTION
-    const val KOIN = "3.5.3"
+    const val HILT = "2.51.1"
+    const val HILT_COMPOSE = "1.2.0"
 }
