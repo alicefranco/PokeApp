@@ -10,19 +10,21 @@ import pt.pprojects.pokelist.presentation.pokelist.PokeListScreen
 import pt.pprojects.pokelist.presentation.pokelist.PokeListViewModel
 import pt.pprojects.pokelist.presentation.pokemondetails.POKE_DETAILS
 import pt.pprojects.pokelist.presentation.pokemondetails.PokemonDetailScreen
+import pt.pprojects.pokelist.presentation.pokemondetails.PokemonDetailsViewModel
 
 @Composable
 fun NavigationHost(navController: NavHostController) {
-    val viewModel: PokeListViewModel = hiltViewModel<PokeListViewModel>()
+    val pokeListViewModel: PokeListViewModel = hiltViewModel()
+    val pokeDetailsViewModel: PokemonDetailsViewModel = hiltViewModel()
 
     NavHost(navController = navController, startDestination = POKE_LIST) {
-        composable(POKE_LIST) { PokeListScreen(navController = navController, viewModel = viewModel) }
+        composable(POKE_LIST) { PokeListScreen(navController, pokeListViewModel) }
         composable(
             "$POKE_DETAILS/{pokemonId}"
         ) { backStackEntry ->
             val pokemonId = backStackEntry.arguments?.getString("pokemonId")
             pokemonId?.let {
-                PokemonDetailScreen(it) { navController.popBackStack() }
+                PokemonDetailScreen(it, pokeDetailsViewModel) { navController.popBackStack() }
             }
         }
     }

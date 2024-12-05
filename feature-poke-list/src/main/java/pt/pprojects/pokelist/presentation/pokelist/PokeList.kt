@@ -26,7 +26,7 @@ import coil3.compose.AsyncImage
 fun PokeList(
     modifier: Modifier,
     pokemons: List<PokemonItem>,
-    onItemClick: () -> Unit
+    onItemClick: (String) -> Unit
 ) {
     LazyColumn(
         modifier = modifier
@@ -38,7 +38,7 @@ fun PokeList(
 }
 
 @Composable
-fun PokemonCard(pokemon: PokemonItem, onItemClick: () -> Unit) {
+fun PokemonCard(pokemon: PokemonItem, onItemClick: (String) -> Unit) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(defaultElevation =16.dp),
         shape = RoundedCornerShape(6.dp),
@@ -47,7 +47,9 @@ fun PokemonCard(pokemon: PokemonItem, onItemClick: () -> Unit) {
             top = 16.dp,
             right = 16.dp
         ),
-        onClick = onItemClick
+        onClick = {
+            onItemClick(pokemon.number)
+        }
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
